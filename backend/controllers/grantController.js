@@ -88,6 +88,6 @@ module.exports = {
     getGrant,
     getGrants,
     postGrant,
+    patchGrant,
     deleteGrant,
-    patchGrant
 }
