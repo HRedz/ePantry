@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const grantRoutes = require('./routes/grants')
 const userRoutes = require('./routes/users')
+const donateRoutes = require('./routes/donate')
 
 const app = express()
 
@@ -14,8 +15,10 @@ app.use((req, res, next) => {
     next()
 })
 
+
 app.use('/api/grants', grantRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/donate', donateRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
