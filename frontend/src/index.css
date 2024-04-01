@@ -1,5 +1,6 @@
 /* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 /* layout */
 :root {
@@ -7,23 +8,33 @@
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
+  background: #FFFFFF;
   margin: 0;
-  font-family: "Poppins";
+  font-family: "Inter";
 }
 header {
-  background: #fff;
+  background: #FAF9F8;
 }
 header .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
+  align-items: left;
+}
+header nav1 {
+  width:25%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 header a {
+  color: #6D6D6D;
+  text-decoration: none;
+}
+header title1 {
   color: #589622;
+  font-family: "Overpass";
   text-decoration: none;
 }
 .pages{
