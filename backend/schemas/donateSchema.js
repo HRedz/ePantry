@@ -5,8 +5,10 @@ const Schema = mongoose.Schema
 const donateSchema = new Schema({
     
     donationID: {
-        type: Number,
-        default: Math.floor(1000000000 + Math.random() * 9000000000),
+        type: String,
+        required: true
+        //type: Number,
+        //default: Math.floor(1000000000 + Math.random() * 9000000000),
     },
     
     donorName: {
@@ -36,6 +38,11 @@ const donateSchema = new Schema({
         type: String,
         required: true,
     },
+
+    orgId:{
+        type: String,
+        required: true,
+    }
 },
 {
     timestamps: true,

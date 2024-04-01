@@ -3,7 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const grantSchema = new Schema({
-    company: {
+    companyId: {
+        type: String,
+        required: true
+    },
+    companyName: {
         type: String,
         required: true
     },
