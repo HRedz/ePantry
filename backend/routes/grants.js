@@ -6,8 +6,11 @@ const {
     patchGrant, 
     deleteGrant
 } = require('../controllers/grantController')
+const authorizeUser = require('../authorizeUser')
 
 const router = express.Router()
+
+router.use(authorizeUser)
 
 router.get('/:id', getGrant)
 
