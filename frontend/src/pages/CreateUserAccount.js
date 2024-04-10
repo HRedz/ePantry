@@ -6,7 +6,7 @@ const CreateUserAccount = () => {
     type: '',
     name: '',
     email: '',
-    passwrd: '', // Ensure this matches your backend field for password
+    passwrd: '',
   });
 
   const handleChange = (e) => {
@@ -16,7 +16,6 @@ const CreateUserAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Adjust the URL according to your environment setup
       const response = await axios.post('/api/auth/signup', formData);
       console.log(response.data);
       // Redirect or show success message
