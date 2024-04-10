@@ -27,9 +27,9 @@ const grantSchema = new Schema({
         type: String
     },
     open : Boolean,
-    applicants: [
+    applications: [
         {
-            org: String
+            applicationId: String
         }
     ],
     winner : String
