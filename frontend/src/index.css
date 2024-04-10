@@ -20,7 +20,6 @@ header .container {
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
-  align-items: left;
 }
 header nav1 {
   width:25%;
@@ -41,4 +40,42 @@ header title1 {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+}
+
+/* homepage */
+.home {
+  background-image: url("https://images.unsplash.com/photo-1533460004989-cef01064af7e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+}
+
+.home titleContainer {
+  width:100%;
+  height:100%;
+  display:flex;
+  margin: 0px auto;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+}
+.home title1 {
+  color: #FAF9F8;
+  font-family: "Overpass";
+  text-decoration: none;
+  font-size:52px;
+}
+.home a {
+  padding: 12px 20px;
+  background-color:#6d9622;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-family: "Inter";
+  font-size: 14px;
+  text-decoration: none;
+}
+.home secondaryContainer {
+  align-items:center;
+  text-align:center;
 }
