@@ -7,7 +7,7 @@ const CashDonation = () => {
     const [cvv, setCVV] = useState('')
     const [zip, setZip] = useState('')
     let errorString = ''
-    let destination = '/cashsubmit'
+    let destination = '/donationsubmit'
       
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,18 +31,18 @@ const CashDonation = () => {
     }
 
     return (
-       <div className="cashDonation" onSubmit={handleSubmit}>
+       <form className="donation" onSubmit={handleSubmit}>
         <h2>Cash Donation</h2>
             <label>Full Name</label>
             <input
-                type="name" 
+                type="text" 
                 onChange={(e) => setName(e.target.value)} 
                 value={name}
             ></input>
 
             <label>Credit Card Number</label>
             <input
-                type="cardnum" 
+                type="number" 
                 onChange={(e) => setCardnum(e.target.value)} 
                 value={cardnum}
             ></input>
@@ -51,7 +51,7 @@ const CashDonation = () => {
                 <container>
                     <label>Exp Date</label>
                     <input
-                        type="exp" 
+                        type="number" 
                         onChange={(e) => setExp(e.target.value)} 
                         value={exp}
                     ></input>
@@ -59,7 +59,7 @@ const CashDonation = () => {
                 <container>
                     <label>CVV</label>
                     <input
-                        type="cvv" 
+                        type="number" 
                         onChange={(e) => setCVV(e.target.value)} 
                         value={cvv}
                     ></input>
@@ -68,7 +68,7 @@ const CashDonation = () => {
 
             <label>Zip Code</label>
             <input
-                type="zip" 
+                type="number" 
                 onChange={(e) => setZip(e.target.value)} 
                 value={zip}
             ></input>
@@ -76,7 +76,7 @@ const CashDonation = () => {
             <container2>
                 <button><a href={destination}>Submit</a></button>
             </container2>
-       </div>
+       </form>
     )
  }
  

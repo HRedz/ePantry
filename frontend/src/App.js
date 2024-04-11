@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // Pages and Components
 import Home from './pages/Home'
 import CashDonation from './pages/CashDonation'
-import CashSubmit from './pages/CashSubmit'
+import FoodDonation from './pages/FoodDonation'
+import DonationSubmit from './pages/DonationSubmit'
 import Navbar from './components/Navbar'
 import CreateUserAccount from './pages/CreateUserAccount'
 import Login from './pages/Login'
@@ -24,8 +25,12 @@ function App() {
               element={<CashDonation />}
             />
             <Route 
-              path="/cashsubmit"
-              element={<CashSubmit />}
+              path="/fooddonation"
+              element={<FoodDonation />}
+            />
+            <Route 
+              path="/donationSubmit"
+              element={<DonationSubmit />}
             />
             <Route
               path="/create-account" 
