@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import CashDonation from './pages/CashDonation'
 import CashSubmit from './pages/CashSubmit'
 import Navbar from './components/Navbar'
+import CreateUserAccount from './pages/CreateUserAccount'
+import Login from './pages/Login'
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route 
+          <Route 
               path="/"
               element={<Home />}
             />
@@ -24,6 +26,14 @@ function App() {
             <Route 
               path="/cashsubmit"
               element={<CashSubmit />}
+            />
+            <Route
+              path="/create-account" 
+              element={<CreateUserAccount />} 
+            />
+            <Route
+              path="/login"
+              element={<Login />}
             />
           </Routes>
         </div>

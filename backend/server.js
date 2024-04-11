@@ -3,6 +3,10 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const grantRoutes = require('./routes/grants')
+const userRoutes = require('./routes/users')
+const donateRoutes = require('./routes/donate')
+const authRoutes = require('./routes/auth')
+const grantApplicationRoutes = require('./routes/grantApplications')
 
 const app = express()
 
@@ -13,7 +17,12 @@ app.use((req, res, next) => {
     next()
 })
 
+
 app.use('/api/grants', grantRoutes)
+app.use('/api/users', userRoutes)
+app.use('/api/donate', donateRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/grantapplications', grantApplicationRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
