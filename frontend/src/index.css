@@ -140,6 +140,13 @@ header title1 {
   text-align:center;
 }
 
+.cashDonation a{
+  color: #FFFFFF;
+  font-family: "Inter";
+  font-size: 14px;
+  text-decoration: none;
+}
+
 /* cash submit page */
 .cashSubmit {
   max-width: 400px;
