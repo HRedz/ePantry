@@ -83,7 +83,7 @@ const FoodDonation = () => {
 
             <label>Dropoff Date</label>
             <input
-                type="number" 
+                type="date" 
                 onChange={(e) => setDate(e.target.value)} 
                 value={date}
             ></input>

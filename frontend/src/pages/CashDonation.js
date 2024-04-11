@@ -51,7 +51,7 @@ const CashDonation = () => {
                 <container>
                     <label>Exp Date</label>
                     <input
-                        type="number" 
+                        type="date" 
                         onChange={(e) => setExp(e.target.value)} 
                         value={exp}
                     ></input>
