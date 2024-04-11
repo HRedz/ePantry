@@ -79,3 +79,78 @@ header title1 {
   align-items:center;
   text-align:center;
 }
+
+/* cash donation page */
+.cashDonation {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #F9F9F9;
+  border-radius: 20px;
+}
+
+.cashDonation h2 {
+  text-align:center;
+}
+
+.cashDonation label, input {
+  display: block;
+}
+
+.cashDonation label {
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.cashDonation input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.cashDonation split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cashDonation container{
+  text-align:left;
+}
+
+.cashDonation container2{
+  display:flex;
+  justify-content:center;
+}
+
+.cashDonation button{
+  padding: 12px 20px;
+  background-color:#6d9622;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-family: "Inter";
+  font-size: 14px;
+  text-decoration: none;
+  cursor:pointer;
+  border:0;
+  text-align:center;
+}
+
+/* cash submit page */
+.cashSubmit {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #F9F9F9;
+  border-radius: 20px;
+  text-align:center;
+}
+
+.cashSubmit bodytext {
+  color: #454E48;
+  font-family: "Inter";
+}
