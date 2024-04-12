@@ -19,7 +19,7 @@ const getDonations = async(req, res) => {
 //Post a donation
 const postDonation = async(req, res) => {
     const user = await User.findById(req.user._id)
-    const {donorName, phone, address, donationType, donatedItems, orgId} = req.body
+    const {donorName, phone, address, donationType, donatedItems, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode} = req.body
 
     if(user.type != 'individual' && user.type != 'company'){
         return res.status(401).json({error: 'Request is not authorized'})
@@ -43,8 +43,22 @@ const postDonation = async(req, res) => {
         emptyFields.push('donatedItems')
     }
     if(!orgId){
-        emptyFields.push('donatedItems')
+        emptyFields.push('orgId')
     }
+
+    if(donationType==='Monetary' && (!creditCardNum)){
+        emptyFields.push('creditCardNum')
+    }
+    if(donationType==='Monetary' && (!creditCardExp)){
+        emptyFields.push('creditCardExp')
+    }
+    if(donationType==='Monetary' && (!creditCardCVV)){
+        emptyFields.push('creditCardCVV')
+    }
+    if(donationType==='Monetary' && (!zipcode)){
+        emptyFields.push('zipcode')
+    }
+
 
     if(emptyFields.length > 0){
         return res.status(400).json({ error: 'All fields must be filled', emptyFields })
@@ -52,10 +66,21 @@ const postDonation = async(req, res) => {
 
     try {
         const donationID = req.user._id.toString()
-        const donate = await Donate.create({donationID, donorName, phone, address, donationType, donatedItems, orgId})
+        const donate = await Donate.create({donationID, donorName, phone, address, donationType, donatedItems, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode})
+        
+        await donate.save();
+        console.log('Saved>');
+        
         res.status(200).json(donate)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        if(error.name == 'ValidationError') {
+            console.error('Validation error',error);
+            return res.status(400).json(error.message);
+          }
+        else{  
+            console.error(error);
+            res.status(500).json({error: error.message});
+        }
     }
 }
 
