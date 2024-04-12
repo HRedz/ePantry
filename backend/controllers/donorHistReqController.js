@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 // only organizations can request to view donor history
 // organizations cannot request to view each others history  
-const reqToViewDonorHist = async(req, res) => {
+const postDonorHistReq = async(req, res) => {
     const {id} = req.params // id of user receiving request for donor hist
 	
 	if(!mongoose.Types.ObjectId.isValid(id)){
@@ -20,6 +20,15 @@ const reqToViewDonorHist = async(req, res) => {
 	if(!userSendReq){
         return res.status(404).json({error: 'User not found'})
     }
+	
+	// check if request already exists, dont allow duplicates
+	const existingRequest = await DonorHistReq.findOne({
+        'userSendingReq._id': userSendReq.id,
+        'userRecvReq._id': userRecvReq.id
+    });
+	if (existingRequest) {
+		return res.status(406).json({error: 'Request already exists'})
+	}
 	
 	// User sending request must be org, and can't send req to another org
 	if (userSendReq.type != "organization" || userRecvReq.type == "organization") {
@@ -68,9 +77,6 @@ const updateApprovalStatus = async(req, res) => {
 		return res.status(401).json({error: 'Request is not authorized'})
 	}
 	
-	console.log(HistReq.id)
-	console.log(HistReq._id)
-	
 	// Approve history request
 	if (approvalStatus) {
 		try {
@@ -98,7 +104,7 @@ const updateApprovalStatus = async(req, res) => {
 
 const getAllInboundHistReq = async(req, res) => {
 	try {
-        const docs = await DonorHistReq.find({ "userSendingReq._id": req.user._id });
+        const docs = await DonorHistReq.find({ "userRecvReq._id": req.user._id });
         res.status(200).json(docs);
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -107,7 +113,7 @@ const getAllInboundHistReq = async(req, res) => {
 
 const getAllOutboundHistReq = async(req, res) => {
 	try {
-        const docs = await DonorHistReq.find({ "userRecvReq._id": req.user._id });
+        const docs = await DonorHistReq.find({ "userSendingReq._id": req.user._id });
         res.status(200).json(docs);
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -115,7 +121,7 @@ const getAllOutboundHistReq = async(req, res) => {
 }
 
 module.exports = {
-	reqToViewDonorHist,
+	postDonorHistReq,
 	updateApprovalStatus,
 	getAllInboundHistReq,
 	getAllOutboundHistReq

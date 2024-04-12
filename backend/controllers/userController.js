@@ -1,4 +1,5 @@
 const User = require('../schemas/userSchema')
+const DonorHistReq = require('../schemas/donorHistReqSchema')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
@@ -28,8 +29,18 @@ const getUser = async(req, res) => {
         }
         res.status(200).json(org)
     }
-    else if(user.type == 'organization'){
-        const company = await User.findById(id)
+    else if(user.type == 'organization'){    
+		const company = await User.findById(id)
+		if (company.type == 'individual') {
+			const isAuthorized = await DonorHistReq.findOne({
+				'userSendingReq._id': req.user._id,
+				'userRecvReq._id': id
+			});
+			
+			if(isAuthorized && isAuthorized.approved) {
+				res.status(200).json(company)
+			}
+		}
         if(company.type != 'company'){
             return res.status(401).json({error: 'Request is not authorized'})
         }
@@ -189,7 +200,7 @@ const signUpUser = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-  
+ 
 
 module.exports = {
     getUser,
