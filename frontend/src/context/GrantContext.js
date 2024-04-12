@@ -19,7 +19,7 @@ export const grantsReducer = (state, action) => {
 
 export const GrantsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(grantsReducer, {
-    orgs: null
+    grants: null
   })
 
   return (

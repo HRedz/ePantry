@@ -84,7 +84,52 @@ const postDonation = async(req, res) => {
     }
 }
 
+const getDonation = async(req, res) => {
+    const user = await User.findById(req.user._id)
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        //console.log("id invalid")
+        return res.status(404).json({error: 'Donation not found'})
+    }
+
+    const donation = await Donate.findById(id)
+    if(!donation){
+        //console.log("not found")
+        return res.status(404).json({error: 'Donation not found'})
+    }
+    return res.status(200).json(donation)
+
+}
+
+const patchDonation = async(req, res) => {
+    const user = await User.findById(req.user._id)
+    const {id} = req.params
+
+    if(user.type != 'organization'){
+        return res.status(401).json({error: 'Request is not authorized'})
+    }
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'Donation not found'})
+    }
+
+    const donation = await Donate.findById(id)
+
+    if(!donation){
+        return res.status(404).json({error: 'Donation not found'})
+    }
+
+    const patchedDonation = await Donate.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    res.status(200).json(patchedDonation)
+}
+
 module.exports = {
     getDonations,
     postDonation,
+    getDonation,
+    patchDonation
 }

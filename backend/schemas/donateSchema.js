@@ -43,6 +43,11 @@ const donateSchema = new Schema({
         required: true,
     },
 
+    status:{
+        type: String,
+        default: "Pending"
+    },
+
     creditCardNum:{
         type: String,
         minlength: [16, 'Credit card number must be 16 digits. Please try again'],
