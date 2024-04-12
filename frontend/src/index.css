@@ -81,7 +81,7 @@ header title1 {
 }
 
 /* cash donation page */
-.cashDonation {
+.donation {
   max-width: 400px;
   margin: 40px auto;
   padding: 30px;
@@ -89,20 +89,20 @@ header title1 {
   border-radius: 20px;
 }
 
-.cashDonation h2 {
+.donation h2 {
   text-align:center;
 }
 
-.cashDonation label, input {
+.donation label, input {
   display: block;
 }
 
-.cashDonation label {
+.donation label {
   color: #454E48;
   font-family: "Inter";
 }
 
-.cashDonation input {
+.donation input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -112,22 +112,22 @@ header title1 {
   box-sizing: border-box;
 }
 
-.cashDonation split{
+.donation split{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.cashDonation container{
+.donation container{
   text-align:left;
 }
 
-.cashDonation container2{
+.donation container2{
   display:flex;
   justify-content:center;
 }
 
-.cashDonation button{
+.donation button{
   padding: 12px 20px;
   background-color:#6d9622;
   border-radius: 12px;
@@ -140,8 +140,15 @@ header title1 {
   text-align:center;
 }
 
+.donation a{
+  color: #FFFFFF;
+  font-family: "Inter";
+  font-size: 14px;
+  text-decoration: none;
+}
+
 /* cash submit page */
-.cashSubmit {
+.donationSubmit {
   max-width: 400px;
   margin: 40px auto;
   padding: 30px;
@@ -150,7 +157,104 @@ header title1 {
   text-align:center;
 }
 
-.cashSubmit bodytext {
+.donationSubmit bodytext {
   color: #454E48;
   font-family: "Inter";
+}
+
+.orgs {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+.orgcards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.orgName {
+  font-size: 18px;
+}
+
+.orgBody {
+  font-size: 14px;
+}
+
+.companies {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+.companycards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.companyName {
+  font-size: 18px;
+}
+
+.companyBody {
+  font-size: 14px;
+}
+
+.grantsCompanyView {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin-left: 50px;
+}
+
+.grantsOrgView {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+
+.grantcards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.grantName {
+  font-size: 18px;
+}
+
+.grantBody {
+  font-size: 14px;
+}
+
+.grantInfo {
+  padding-top: 5px;
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 14px;
+}
+
+.grantForm {
+  display: inline;
+  width: 200px;
+  float: right;
 }
