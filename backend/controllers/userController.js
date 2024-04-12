@@ -31,6 +31,7 @@ const getUser = async(req, res) => {
     }
     else if(user.type == 'organization'){    
 		const company = await User.findById(id)
+		// check if org is authorized to view individuals history
 		if (company.type == 'individual') {
 			const isAuthorized = await DonorHistReq.findOne({
 				'userSendingReq._id': req.user._id,
@@ -38,7 +39,7 @@ const getUser = async(req, res) => {
 			});
 			
 			if(isAuthorized && isAuthorized.approved) {
-				res.status(200).json(company)
+				return res.status(200).json(company)
 			}
 		}
         if(company.type != 'company'){
