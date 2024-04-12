@@ -8,8 +8,6 @@ const donateSchema = new Schema({
     donationID: {
         type: String,
         required: true
-        //type: Number,
-        //default: Math.floor(1000000000 + Math.random() * 9000000000),
     },
     
     donorName: {
@@ -46,29 +44,29 @@ const donateSchema = new Schema({
     },
 
     creditCardNum:{
-        type: Number,
+        type: String,
         minlength: [16, 'Credit card number must be 16 digits. Please try again'],
-        required: isMonetary,      
+        required: function () { return this.donationType === 'Monetary'; },      
     },
 
     creditCardExp:{
-        //The type can be Date, but that will include day, and will have to include HrMinSec when checking
+        //Date will include day, and will have to include HrMinSec when checking
         //in Postman.
-        type: String,
-        required: isMonetary,      
+        type: Date,
+        required: function () { return this.donationType === 'Monetary'; },      
     },
 
     creditCardCVV:{
-        type: Number,
+        type: String,
         minlength: [3, 'Credit card cvv must be a minimum of 3 digits. Please try again'],
         maxlength: [4, 'Credit card cvv must be at most 4 digits. Please try again'],
-        required: isMonetary,      
+        required: function () { return this.donationType === 'Monetary'; },      
     },
 
     zipcode:{
-        type: Number,
+        type: String,
         minlength: [5, 'US Zipcode must be 5 digits. Please try again'],
-        required: isMonetary,      
+        required: function () { return this.donationType === 'Monetary'; },      
     }
 },
 {
@@ -76,20 +74,5 @@ const donateSchema = new Schema({
 }
 );
 
-function isMonetary(){
-    //checking if the enum selected is monetary
-    if(donationCategory.includes('Monetary')) {
-        return true;
-    }
-    return false;
-}
-
-function isNonmonetary(){
-    //checking if the enum selected is monetary
-    if(donationCategory.includes('Non-monetary')) {
-        return true;
-    }
-    return false;
-}
 
 module.exports = mongoose.model('Donate', donateSchema);
