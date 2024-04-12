@@ -4,7 +4,7 @@ const Home = () => {
          <titleContainer>
             <secondaryContainer>
             <title1>Where all your nonprofit funding needs are met.</title1> <br /><br />
-            <a href="/">Join us today!</a>
+            <a href="/create-account">Join us today!</a>
             </secondaryContainer>
          </titleContainer>
       </div>
