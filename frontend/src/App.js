@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import UserProfile from './pages/UserProfile'
+import { useAuthContext } from './hooks/AuthContextHook'
 
 // Pages and Components
 import Home from './pages/Home'
@@ -9,8 +10,13 @@ import DonationSubmit from './pages/DonationSubmit'
 import Navbar from './components/Navbar'
 import CreateUserAccount from './pages/CreateUserAccount'
 import Login from './pages/Login'
+import Orgs from './pages/Orgs'
+import Companies from './pages/Companies'
+import Grants from './pages/Grants'
 
 function App() {
+  const { user } = useAuthContext()
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -44,6 +50,21 @@ function App() {
             <Route 
               path="/user-profile" 
               element={<UserProfile />} 
+            <Route
+              path="/orgs"
+              element={<Orgs />}
+            />
+            <Route
+              path="/companies"
+              element={<Companies />}
+            />
+            <Route
+              path="/grants"
+              element={<Grants />}
+            />
+            <Route
+              path="/apply"
+              element={<Grants />}
             />
           </Routes>
         </div>

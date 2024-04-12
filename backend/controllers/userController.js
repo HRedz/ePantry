@@ -165,7 +165,10 @@ const logInUser = async (req, res) => {
 
         const id = user._id.toString()
 
-        res.status(200).json({id, email, token})
+        const type = user.type;
+        const name = user.name;
+
+        res.status(200).json({id, type, name, email, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }

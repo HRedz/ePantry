@@ -161,3 +161,100 @@ header title1 {
   color: #454E48;
   font-family: "Inter";
 }
+
+.orgs {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+.orgcards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.orgName {
+  font-size: 18px;
+}
+
+.orgBody {
+  font-size: 14px;
+}
+
+.companies {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+.companycards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.companyName {
+  font-size: 18px;
+}
+
+.companyBody {
+  font-size: 14px;
+}
+
+.grantsCompanyView {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin-left: 50px;
+}
+
+.grantsOrgView {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+
+.grantcards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.grantName {
+  font-size: 18px;
+}
+
+.grantBody {
+  font-size: 14px;
+}
+
+.grantInfo {
+  padding-top: 5px;
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 14px;
+}
+
+.grantForm {
+  display: inline;
+  width: 200px;
+  float: right;
+}
