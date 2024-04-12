@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Orgs from './pages/Orgs'
 import Companies from './pages/Companies'
 import Grants from './pages/Grants'
+import PendingDonations from './pages/PendingDonations'
 
 function App() {
   const { user } = useAuthContext()
@@ -66,6 +67,10 @@ function App() {
             <Route
               path="/apply"
               element={<Grants />}
+            />
+            <Route
+              path="/pendingdonations"
+              element={<PendingDonations />}
             />
           </Routes>
         </div>

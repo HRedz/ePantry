@@ -38,6 +38,11 @@ const Navbar = () => {
                   <div className="nav-link">My Grants</div>
                </Link>
             )}
+            {user && (user.type == 'organization' )  && (
+               <Link to="/pendingdonations">
+                  <div className="nav-link">Pending Donations</div>
+               </Link>
+            )}
 
             </nav1>
          </div>
