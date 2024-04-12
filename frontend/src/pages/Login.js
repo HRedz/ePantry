@@ -14,8 +14,8 @@ const Login = () => {
     try {
       const response = await axios.post('/api/auth/login', { email, passwrd });
       console.log('Login successful:', response.data);
-      localStorage.setItem('user', JSON.stringify(response.data)); // Save user info in local storage
-      navigate('/user-profile', { state: { user: response.data }}); // Redirect to user profile page
+      localStorage.setItem('user', JSON.stringify(response.data));                        // Save user info in local storage
+      navigate('/user-profile', { state: { user: response.data }});                       // Redirect to user profile page
     } catch (err) {
       setError('Failed to login. Please check your credentials.');
       console.error('Login error:', err.response.data);
