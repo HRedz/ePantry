@@ -50,6 +50,7 @@ function App() {
             <Route 
               path="/user-profile" 
               element={<UserProfile />} 
+              />
             <Route
               path="/orgs"
               element={<Orgs />}
