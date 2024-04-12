@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSignup } from '../hooks/SignUpHook';
 
 const CreateUserAccount = () => {
+  const {signup, error, isLoading} = useSignup()
   const [formData, setFormData] = useState({
     type: '',
     name: '',
@@ -16,8 +18,9 @@ const CreateUserAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/auth/signup', formData);
-      console.log(response.data);
+      await signup(formData.type, formData.name, formData.email, formData.passwrd)
+      //const response = await axios.post('/api/auth/signup', formData);
+      //console.log(response.data);
       // Redirect or show success message
     } catch (error) {
       console.error(error.response.data);

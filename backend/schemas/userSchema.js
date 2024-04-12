@@ -37,6 +37,9 @@ const userSchema = new Schema({
             grantID: Number
         }
     ],
+    description: {
+      type: String
+    }
 }, { timestamps: true })
 
 // static methods for logging in and signing up
