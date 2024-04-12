@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';     // Import useLocation
 
 const UserProfile = () => {
-    const location = useLocation();                 // Access location object
-    const user = location.state.user;               // Retrieve user data passed from Login component
+
+    const user = JSON.parse(localStorage.getItem('user'));
 
     return (
         <div className="user-profile">
