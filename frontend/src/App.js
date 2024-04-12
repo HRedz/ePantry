@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import UserProfile from './pages/UserProfile'
 
 // Pages and Components
 import Home from './pages/Home'
@@ -39,6 +40,10 @@ function App() {
             <Route
               path="/login"
               element={<Login />}
+            />
+            <Route 
+              path="/user-profile" 
+              element={<UserProfile />} 
             />
           </Routes>
         </div>

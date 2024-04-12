@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [passwrd, setPasswrd] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -12,9 +14,8 @@ const Login = () => {
     try {
       const response = await axios.post('/api/auth/login', { email, passwrd });
       console.log('Login successful:', response.data);
-      // Save the received token in local storage
-      localStorage.setItem('token', response.data.token);
-      // Redirect user to account page
+      localStorage.setItem('user', JSON.stringify(response.data)); // Save user info in local storage
+      navigate('/user-profile', { state: { user: response.data }}); // Redirect to user profile page
     } catch (err) {
       setError('Failed to login. Please check your credentials.');
       console.error('Login error:', err.response.data);
