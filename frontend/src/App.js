@@ -14,6 +14,7 @@ import Orgs from './pages/Orgs'
 import Companies from './pages/Companies'
 import Grants from './pages/Grants'
 import PendingDonations from './pages/PendingDonations'
+import PersonalDonations from './pages/PersonalDonations'
 
 function App() {
   const { user } = useAuthContext()
@@ -71,6 +72,10 @@ function App() {
             <Route
               path="/pendingdonations"
               element={<PendingDonations />}
+            />
+            <Route 
+              path="donationhistory" 
+              element={<PersonalDonations />}
             />
           </Routes>
         </div>
