@@ -12,12 +12,12 @@ const router = express.Router()
 router.use(authorizeUser)
 
 // id is id of application being viewed
-router.get('/view/:id', getGrantApplication)
+router.get('/:id', getGrantApplication)
 
-router.get('/view', getGrantApplications)
+router.get('/', getGrantApplications)
 
 // here id is id of grant applying to
-router.post('/apply/:id', postGrantApplication)
+router.post('/:id', postGrantApplication)
 
 router.patch('/view/:id', approveGrantApplication)
 
