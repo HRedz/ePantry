@@ -6,10 +6,12 @@ const {
     patchDonation
 } = require('../controllers/donateController')
 const authorizeUser = require('../authorizeUser')
+const donationValidate = require('../donationValidate')
 
 const router = express.Router()
 
 router.use(authorizeUser)
+router.use(donationValidate)
 
 
 router.get('/', getDonations)

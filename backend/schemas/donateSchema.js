@@ -31,13 +31,6 @@ const donateSchema = new Schema({
         required: true,
     },
 
-    //Listing items being donated or the amount to donate.
-    //Might change field type later
-    donatedItems:{
-        type: String,
-        required: true,
-    },
-
     orgId:{
         type: String,
         required: true,
@@ -47,6 +40,8 @@ const donateSchema = new Schema({
         type: String,
         default: "Pending"
     },
+
+    //Monetary donation fields
 
     creditCardNum:{
         type: String,
@@ -72,6 +67,39 @@ const donateSchema = new Schema({
         type: String,
         minlength: [5, 'US Zipcode must be 5 digits. Please try again'],
         required: function () { return this.donationType === 'Monetary'; },      
+    },
+
+    //Food donation fields
+
+    //Listing items being donated or the amount to donate. Might change field type later
+    donatedItems:{
+        type: String,
+        required: function () { return this.donationType === 'Non-monetary'; },
+    },
+
+    itemWeight:{
+        type: Number,
+        min: [0, 'Weight must be 0 and above. Try again'],
+        required: function () { return this.donationType === 'Non-monetary'; },
+    },
+    noOfPackages:{
+        type: Number,
+        min: [0,'The number of packages must be positive'],
+        required: function () { return this.donationType === 'Non-monetary'; },
+    },
+    originZipcode:{
+        type: String,
+        minlength: [5, 'Origin zipcode must be 5 digits. Please try again'],
+        required: function () { return this.donationType === 'Non-monetary'; },      
+    },
+    destZipcode:{
+        type: String,
+        minlength: [5, 'Destination zipcode must be 5 digits. Please try again'],
+        required: function () { return this.donationType === 'Non-monetary'; },      
+    },
+    dropoffDate:{
+        type: Date,
+        required: function () { return this.donationType === 'Non-monetary'; },
     }
 },
 {

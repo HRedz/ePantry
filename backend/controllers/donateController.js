@@ -19,7 +19,7 @@ const getDonations = async(req, res) => {
 //Post a donation
 const postDonation = async(req, res) => {
     const user = await User.findById(req.user._id)
-    const {donorName, phone, address, donationType, donatedItems, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode} = req.body
+    const {donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate} = req.body
 
     if(user.type != 'individual' && user.type != 'company'){
         return res.status(401).json({error: 'Request is not authorized'})
@@ -39,9 +39,7 @@ const postDonation = async(req, res) => {
     if(!donationType){
         emptyFields.push('donationType')
     }
-    if(!donatedItems){
-        emptyFields.push('donatedItems')
-    }
+    
     if(!orgId){
         emptyFields.push('orgId')
     }
@@ -59,6 +57,27 @@ const postDonation = async(req, res) => {
         emptyFields.push('zipcode')
     }
 
+    if(donationType==='Non-monetary' && (!donatedItems)){
+        emptyFields.push('donatedItems')
+    }
+    if(donationType==='Non-monetary' && (!itemWeight)){
+        emptyFields.push('itemWeight')
+    }
+    if(donationType==='Non-monetary' && (!noOfPackages)){
+        emptyFields.push('noOfPackages')
+    }
+    if(donationType==='Non-monetary' && (!originZipcode)){
+        emptyFields.push('originZipcode')
+    }
+    if(donationType==='Non-monetary' && (!destZipcode)){
+        emptyFields.push('destZipcode')
+    }
+    if(donationType==='Non-monetary' && (!dropoffDate)){
+        emptyFields.push('dropoffDate')
+    }
+    
+
+
 
     if(emptyFields.length > 0){
         return res.status(400).json({ error: 'All fields must be filled', emptyFields })
@@ -66,7 +85,7 @@ const postDonation = async(req, res) => {
 
     try {
         const donationID = req.user._id.toString()
-        const donate = await Donate.create({donationID, donorName, phone, address, donationType, donatedItems, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode})
+        const donate = await Donate.create({donationID, donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
         
         await donate.save();
         console.log('Saved>');
@@ -74,7 +93,7 @@ const postDonation = async(req, res) => {
         res.status(200).json(donate)
     } catch (error) {
         if(error.name == 'ValidationError') {
-            console.error('Validation error',error);
+            console.error('Validation error check values entered',error);
             return res.status(400).json(error.message);
           }
         else{  
