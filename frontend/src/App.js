@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import UserProfile from './pages/UserProfile'
 import { useAuthContext } from './hooks/AuthContextHook'
 
@@ -14,6 +14,8 @@ import Orgs from './pages/Orgs'
 import Companies from './pages/Companies'
 import Grants from './pages/Grants'
 import PendingDonations from './pages/PendingDonations'
+import PersonalDonations from './pages/PersonalDonations'
+import PendingPermissions from './pages/PendingPermissions'
 
 function App() {
   const { user } = useAuthContext()
@@ -46,7 +48,7 @@ function App() {
             />
             <Route
               path="/login"
-              element={<Login />}
+              element={!user ? <Login /> : <Navigate to="/user-profile" />}
             />
             <Route 
               path="/user-profile" 
@@ -65,12 +67,16 @@ function App() {
               element={<Grants />}
             />
             <Route
-              path="/apply"
-              element={<Grants />}
-            />
-            <Route
               path="/pendingdonations"
               element={<PendingDonations />}
+            />
+            <Route 
+              path="donationhistory" 
+              element={<PersonalDonations />}
+            />
+            <Route 
+              path="permissions" 
+              element={<PendingPermissions />}
             />
           </Routes>
         </div>

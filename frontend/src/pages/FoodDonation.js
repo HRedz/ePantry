@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../hooks/AuthContextHook'
 
 const FoodDonation = () => {
     const [items, setItems] = useState('')
@@ -8,12 +9,71 @@ const FoodDonation = () => {
     const [origin, setOrigin] = useState('')
     const [dest, setDest] = useState('')
     const [date, setDate] = useState('')
+    const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
+    let errorString = ''
     let destination = '/donationsubmit'
-    let navigate = useNavigate()
+
+    const { user } = useAuthContext()
+    const location = useLocation();
+    const navigate = useNavigate()
+    let { org } = location.state;
       
     const handleSubmit = async (e) => {
         e.preventDefault()
-        navigate(destination)
+
+        const donorName = user.name
+        const donationID = user.id
+        const phone = '1234567890'
+        const address = 'address'
+        const donationType = 'Non-monetary'
+        const orgId = org._id
+
+        if (items.trim() === "" ||
+            weight.trim() === "" ||
+            num.trim() === ""||
+            origin.trim() === ""||
+            dest.trim() === ""||
+            date.trim() === "") {
+        let errorString = 'Please fill in all fields correctly.'
+        }
+        else {
+        setItems('')
+        setWeight('')
+        setNum('')
+        setOrigin('')
+        setDest('')
+        setDate('')
+        let destination = '/donationSubmit'
+        }
+
+        const donatedItems = items
+        const itemWeight = weight
+        const noOfPackages = num
+        const originZipcode = origin
+        const destZipcode = dest
+        const dropoffDate = date
+
+        const donation = {donationID, donorName, phone, address, donationType, orgId, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate}
+
+        const response = await fetch('/api/donate', {
+            method: 'POST',
+            body: JSON.stringify(donation),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setError(json.error)
+            setEmptyFields(json.emptyFields)
+        }
+
+        if(response.ok){
+            navigate('/donationsubmit')
+        }
     }
 
     return (
@@ -28,7 +88,7 @@ const FoodDonation = () => {
 
             <split>
                 <container>
-                    <label>Weight</label>
+                    <label>Weight (lbs)</label>
                     <input
                         type="number" 
                         onChange={(e) => setWeight(e.target.value)} 
@@ -72,8 +132,9 @@ const FoodDonation = () => {
             ></input>
 
             <container2>
-                <button type="submit">Submit</button>
+                <button onClick={handleSubmit}>Submit</button>
             </container2>
+            {error && <div className="error">{error}</div>}
        </form>
     )
  }
