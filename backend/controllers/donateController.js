@@ -19,7 +19,7 @@ const getDonations = async(req, res) => {
 //Post a donation
 const postDonation = async(req, res) => {
     const user = await User.findById(req.user._id)
-    const {donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate} = req.body
+    const {donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, amount, paymentDate, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate} = req.body
 
     if(user.type != 'individual' && user.type != 'company'){
         return res.status(401).json({error: 'Request is not authorized'})
@@ -56,6 +56,9 @@ const postDonation = async(req, res) => {
     if(donationType==='Monetary' && (!zipcode)){
         emptyFields.push('zipcode')
     }
+    if(donationType==='Monetary' && (!amount)){
+        emptyFields.push('amount')
+    }
 
     if(donationType==='Non-monetary' && (!donatedItems)){
         emptyFields.push('donatedItems')
@@ -85,7 +88,7 @@ const postDonation = async(req, res) => {
 
     try {
         const donationID = req.user._id.toString()
-        const donate = await Donate.create({donationID, donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
+        const donate = await Donate.create({donationID, donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, amount, paymentDate, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
         
         await donate.save();
         console.log('Saved>');
@@ -94,7 +97,7 @@ const postDonation = async(req, res) => {
     } catch (error) {
         if(error.name == 'ValidationError') {
             console.error('Validation error check values entered',error);
-            return res.status(400).json(error.message);
+            return res.status(400).json({error: error.message});
           }
         else{  
             console.error(error);
