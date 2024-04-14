@@ -22,14 +22,15 @@ header .container {
   display: flex;
 }
 header nav1 {
-  width:25%;
+  width:100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
 header a {
   color: #6D6D6D;
   text-decoration: none;
+  margin: 10px;
 }
 header title1 {
   color: #589622;
@@ -286,7 +287,7 @@ header title1 {
   font-size: 14px;
 }
 
-.donationItem {
+.donationBody {
   padding-top: 5px;
   color: #454E48;
   font-family: "Inter";
@@ -322,4 +323,24 @@ header title1 {
 .rejectButtonText {
   margin-left: 32px;
   color:#F9F9F9;
+}
+
+.donateButton{
+  display: block;
+  margin-top: 10px;
+  background-color: #6d9622;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 130px;
+  height: 25px;
+  padding: 10px;
+  color:#F9F9F9; 
+}
+
+.donateCashButtonText {
+  margin-left: 20px;
+}
+
+.donateGoodsButtonText {
+  margin-left: 5px;
 }

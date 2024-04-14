@@ -67,10 +67,6 @@ function App() {
               element={<Grants />}
             />
             <Route
-              path="/apply"
-              element={<Grants />}
-            />
-            <Route
               path="/pendingdonations"
               element={<PendingDonations />}
             />

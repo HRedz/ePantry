@@ -69,6 +69,16 @@ const donateSchema = new Schema({
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
+    amount:{
+        type: Number,
+        required: function () { return this.donationType === 'Monetary'; },      
+    },
+
+    paymentDate:{
+        type: Date,
+        required: function () { return this.donationType === 'Monetary'; },      
+    },
+
     //Food donation fields
 
     //Listing items being donated or the amount to donate. Might change field type later
