@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAuthContext } from '../hooks/AuthContextHook'
 
 const CashDonation = () => {
@@ -17,7 +17,14 @@ const CashDonation = () => {
     const { user } = useAuthContext()
     const location = useLocation();
     const navigate = useNavigate()
-    let { org } = location.state;
+    //let { org } = location.state;
+    let { orgIdParam } = useParams();
+
+    if(!user){
+        return (
+            <p>Please log in or sign up.</p>
+        )
+    }
       
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,7 +33,9 @@ const CashDonation = () => {
         const phone = '1234567890'
         const address = 'address'
         const donationType = 'Monetary'
-        const orgId = org._id
+        //const orgId = org._id
+        const orgId = orgIdParam
+        // makes date todays date
         const paymentDate = new Date()
 
         if (name.trim() === "" ||
@@ -53,7 +62,7 @@ const CashDonation = () => {
         const zipcode = zip
 
         const donation = {donationID, donorName, phone, address, donationType, orgId, amount, paymentDate, creditCardNum, creditCardExp, creditCardCVV, zipcode}
-        //console.log(donation)
+        console.log(donation)
 
         const response = await fetch('/api/donate', {
             method: 'POST',
