@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CashDonation = () => {
     const [name, setName] = useState('')
@@ -6,28 +7,12 @@ const CashDonation = () => {
     const [exp, setExp] = useState('')
     const [cvv, setCVV] = useState('')
     const [zip, setZip] = useState('')
-    let errorString = ''
     let destination = '/donationsubmit'
+    let navigate = useNavigate()
       
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if (name.trim() === "" ||
-            cardnum.trim() === "" ||
-            exp.trim() === "" ||
-            cvv.trim() === "" ||
-            zip.trim() === "") {
-        let errorString = 'Please fill in all fields correctly.'
-        }
-        else {
-        setName('')
-        setCardnum('')
-        setExp('')
-        setCVV('')
-        setZip('')
-        let destination = '/cashsubmit'
-        }
-
+        navigate(destination)
     }
 
     return (
@@ -74,7 +59,7 @@ const CashDonation = () => {
             ></input>
 
             <container2>
-                <button><a href={destination}>Submit</a></button>
+                <button type="submit">Submit</button>
             </container2>
        </form>
     )
