@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import UserProfile from './pages/UserProfile'
 import { useAuthContext } from './hooks/AuthContextHook'
 
@@ -48,7 +48,7 @@ function App() {
             />
             <Route
               path="/login"
-              element={<Login />}
+              element={!user ? <Login /> : <Navigate to="/user-profile" />}
             />
             <Route 
               path="/user-profile" 

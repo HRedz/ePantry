@@ -13,7 +13,9 @@ const Login = () => {
 
     try {
       await login(email, passwrd);                                                        // login function from the hook
-      navigate('/user-profile', { state: { user } });                                     // navigate to profile
+      // commented out for bug fix --> tried to redirect was user was null causing crash
+      // now redirects user to profile page from App.js --> ternary line to determine location
+      //navigate('/user-profile', { state: { user } });                                     // navigate to profile
     } catch (err) {
       console.error('Login error:', err);
     }
