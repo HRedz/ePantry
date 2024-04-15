@@ -81,7 +81,7 @@ header title1 {
   text-align:center;
 }
 
-/* cash donation page */
+/* donation pages */
 .donation {
   max-width: 400px;
   margin: 40px auto;
@@ -148,7 +148,7 @@ header title1 {
   text-decoration: none;
 }
 
-/* cash submit page */
+/* submit page */
 .donationSubmit {
   max-width: 400px;
   margin: 40px auto;
@@ -343,4 +343,54 @@ header title1 {
 
 .donateGoodsButtonText {
   margin-left: 5px;
+}
+
+/* edit account */
+.editAccount {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #F9F9F9;
+  border-radius: 20px;
+}
+
+.editAccount h2 {
+  text-align:center;
+}
+
+.editAccount label, input {
+  display: block;
+}
+
+.editAccount label {
+  color: #454E48;
+  font-family: "Inter";
+}
+
+.editAccount input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.editAccount buttonContainer{
+  display:flex;
+  justify-content: right;
+}
+
+.editAccount button{
+  margin-bottom: 20px;
+  color: #6d9622;
+  /*padding: 12px 20px;
+  width: 600px;*/
+  background-color:transparent;
+  font-family: "Inter";
+  font-size: 14px;
+  text-decoration: none;
+  cursor:pointer;
+  border:0;
 }
