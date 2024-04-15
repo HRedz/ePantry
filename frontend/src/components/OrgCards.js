@@ -10,13 +10,13 @@ const OrgCards = ({ org }) => {
   const donateCash = async (e) => {
     e.preventDefault()
     //console.log('donate')
-    navigate('/cashdonation', { state: { org } }); 
+    navigate('/cashdonation/' + org._id); 
   }
 
   const donateGoods = async (e) => {
     e.preventDefault()
     //console.log('donate')
-    navigate('/fooddonation', { state: { org } }); 
+    navigate('/fooddonation/' + org._id); 
   }
 
   return (

@@ -32,12 +32,14 @@ function App() {
               element={<Home />}
             />
             <Route 
-              path="/cashdonation"
+              path="/cashdonation/:orgIdParam"
               element={<CashDonation />}
+              //element={user ? <CashDonation /> : <Navigate to="/login" />}
             />
             <Route 
-              path="/fooddonation"
+              path="/fooddonation/:orgIdParam"
               element={<FoodDonation />}
+              //element={user ? <FoodDonation /> : <Navigate to="/login" />}
             />
             <Route 
               path="/donationSubmit"
@@ -45,7 +47,7 @@ function App() {
             />
             <Route
               path="/create-account" 
-              element={<CreateUserAccount />} 
+              element={!user ? <CreateUserAccount /> : <Navigate to="/user-profile" />}
             />
             <Route
               path="/login"
