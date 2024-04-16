@@ -45,9 +45,6 @@ const UserProfile = () => {
           <button onClick={() => window.location.href = '/'}>
             Approve/Deny Grant Applications
           </button>
-          <button onClick={() => window.location.href = '/'}>
-            Post Grant
-          </button>
         </div>
         );
 
@@ -63,9 +60,6 @@ const UserProfile = () => {
           />
           <h1>Organization: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button onClick={() => window.location.href = '/'}>
-            Approve/Deny Donation Applications
-          </button>
           <button onClick={() => window.location.href = '/'}>
             View Grant Status
           </button>
