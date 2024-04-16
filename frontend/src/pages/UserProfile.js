@@ -4,6 +4,12 @@ const UserProfile = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
+    if(!user){
+      return (
+          <p>Please log in or sign up.</p>
+      )
+    }
+
     const separateProfiles = () => {
       switch (user.type) {
         

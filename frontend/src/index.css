@@ -394,3 +394,7 @@ header title1 {
   cursor:pointer;
   border:0;
 }
+
+.radio-button {
+  display: flex;
+}

@@ -12,6 +12,12 @@ const EditAccount = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const navigate = useNavigate()
 
+    if(!user){
+        return (
+            <p>Please log in or sign up.</p>
+        )
+    }
+
     // propagate account changes to local storage
     const updateState = async (updatedUser) => {
         // Retrieve the existing user data from local storage

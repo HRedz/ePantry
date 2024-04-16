@@ -30,8 +30,21 @@ const CashDonation = () => {
         e.preventDefault()
 
         const donationID = user.id
-        const phone = '1234567890'
-        const address = 'address'
+        var phone
+        if(user.phone){
+            phone = user.phone
+        }
+        else{
+            phone = '1234567890'
+        }
+        var address
+        if(user.address){
+            address = user.address
+        }
+        else{
+            address = 'address'
+        }
+        
         const donationType = 'Monetary'
         //const orgId = org._id
         const orgId = orgIdParam

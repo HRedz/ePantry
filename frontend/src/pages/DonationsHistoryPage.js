@@ -3,6 +3,12 @@ import React from 'react';
 const DonationsHistoryPage = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
+
+  if(!user){
+    return (
+        <p>Please log in or sign up.</p>
+    )
+  }
   
   const separateDonationHistory = () => {
 

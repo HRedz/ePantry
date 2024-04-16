@@ -9,6 +9,8 @@ const CreateUserAccount = () => {
     name: '',
     email: '',
     passwrd: '',
+    phone: '',
+    address: ''
   });
 
   const handleChange = (e) => {
@@ -18,7 +20,7 @@ const CreateUserAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signup(formData.type, formData.name, formData.email, formData.passwrd)
+      await signup(formData.type, formData.name, formData.email, formData.passwrd, formData.phone, formData.address)
       //const response = await axios.post('/api/auth/signup', formData);
       //console.log(response.data);
       // Redirect or show success message
@@ -33,14 +35,40 @@ const CreateUserAccount = () => {
     <form className="create-user-form" onSubmit={handleSubmit}>
       <h2>Create User Account</h2>
       <div className="form-group">
-        <label>Type</label>
+        <label>User Type</label>
+        <div class="radio-button">
         <input
-          type="text"
+          type="radio"
+          id = "organization"
           name="type"
-          value={formData.type}
+          value="organization"
           onChange={handleChange}
           required
         />
+        <label for="organization">Not-For-Profit Organization</label>
+        </div>
+        <div class="radio-button">
+        <input
+          type="radio"
+          id = "company"
+          name="type"
+          value="company"
+          onChange={handleChange}
+          required
+        />
+        <label for="company">Company Donor</label>
+        </div>
+        <div class="radio-button">
+        <input
+          type="radio"
+          id = "individual"
+          name="type"
+          value="individual"
+          onChange={handleChange}
+          required
+        />
+        <label for="individual">Individual Donor</label>
+        </div>
       </div>
       <div className="form-group">
         <label>Name</label>
@@ -68,6 +96,26 @@ const CreateUserAccount = () => {
           type="password"
           name="passwrd"
           value={formData.passwrd}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Phone Number</label>
+        <input
+          type="number"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Address</label>
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
           onChange={handleChange}
           required
         />
