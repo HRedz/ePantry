@@ -12,6 +12,26 @@ const EditAccount = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const navigate = useNavigate()
 
+    // propagate account changes to local storage
+    const updateState = async (updatedUser) => {
+        // Retrieve the existing user data from local storage
+        const userDataString = localStorage.getItem('user');
+        if (!userDataString) {
+            console.log('No user data found in local storage.');
+            return;
+        }
+        const userData = JSON.parse(userDataString);
+
+        // Update the name and email fields
+        userData.name = updatedUser.name;
+        userData.email = updatedUser.email;
+
+        const updatedUserDataString = JSON.stringify(userData);
+
+        // Save the updated JSON string
+        localStorage.setItem('user', updatedUserDataString);
+    };
+
     const handleName = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
@@ -32,6 +52,7 @@ const EditAccount = () => {
         }
 
         if(response.ok){
+            updateState(json)
             navigate('/user-profile')
         }
     }
@@ -39,7 +60,7 @@ const EditAccount = () => {
     const handleEmail = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
-            method: 'POST',
+            method: 'PATCH',
             body: JSON.stringify({
                 email: email
             }),
@@ -56,6 +77,7 @@ const EditAccount = () => {
         }
 
         if(response.ok){
+            updateState(json)
             navigate('/user-profile')
         }
     };
@@ -63,11 +85,12 @@ const EditAccount = () => {
     const handlePassword = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
-            method: 'POST',
+            method: 'PATCH',
             body: JSON.stringify({
                 passwrd: password
             }),
             headers:{
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         })
@@ -79,6 +102,7 @@ const EditAccount = () => {
         }
 
         if(response.ok){
+            updateState(json)
             navigate('/user-profile')
         }
     };
@@ -86,11 +110,12 @@ const EditAccount = () => {
     const handleDesc = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
-            method: 'POST',
+            method: 'PATCH',
             body: JSON.stringify({
                 description: desc
             }),
             headers:{
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         })
@@ -102,6 +127,7 @@ const EditAccount = () => {
         }
 
         if(response.ok){
+            updateState(json)
             navigate('/user-profile')
         }
     };
