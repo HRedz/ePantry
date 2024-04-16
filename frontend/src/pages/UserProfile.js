@@ -42,8 +42,11 @@ const UserProfile = () => {
           <button onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
-          <button onClick={() => window.location.href = '/permissions'}>
-            View Pending Permissions
+          <button onClick={() => window.location.href = '/'}>
+            Approve/Deny Grant Applications
+          </button>
+          <button onClick={() => window.location.href = '/'}>
+            Post Grant
           </button>
         </div>
         );
