@@ -14,7 +14,7 @@ import Orgs from './pages/Orgs'
 import Companies from './pages/Companies'
 import Grants from './pages/Grants'
 import PendingDonations from './pages/PendingDonations'
-import PersonalDonations from './pages/PersonalDonations'
+import DonationHistory from './pages/DonationsHistoryPage'
 import PendingPermissions from './pages/PendingPermissions'
 import EditAccount from './pages/EditAccount'
 
@@ -75,7 +75,7 @@ function App() {
             />
             <Route 
               path="donationhistory" 
-              element={<PersonalDonations />}
+              element={<DonationHistory />}
             />
             <Route 
               path="permissions" 
