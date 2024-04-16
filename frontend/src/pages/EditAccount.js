@@ -14,7 +14,7 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'PATCH',
-            body: JSON.stringify(name),
+            body: {'name': JSON.stringify(name)},
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -24,6 +24,10 @@ const EditAccount = () => {
         if (!response.ok){
             setError(json.error)
             setEmptyFields(json.emptyFields)
+        }
+
+        if(response.ok){
+            navigate('/user-profile')
         }
     }
     
@@ -31,7 +35,7 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: JSON.stringify(email),
+            body: {'email': JSON.stringify(email)},
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -41,6 +45,10 @@ const EditAccount = () => {
         if (!response.ok){
             setError(json.error)
             setEmptyFields(json.emptyFields)
+        }
+
+        if(response.ok){
+            navigate('/user-profile')
         }
     };
     
@@ -48,7 +56,7 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: JSON.stringify(password),
+            body: {'passwrd': JSON.stringify(password)},
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -59,13 +67,17 @@ const EditAccount = () => {
             setError(json.error)
             setEmptyFields(json.emptyFields)
         }
+
+        if(response.ok){
+            navigate('/user-profile')
+        }
     };
 
     const handleDesc = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: JSON.stringify(desc),
+            body: {'description': JSON.stringify(desc)},
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -75,6 +87,10 @@ const EditAccount = () => {
         if (!response.ok){
             setError(json.error)
             setEmptyFields(json.emptyFields)
+        }
+
+        if(response.ok){
+            navigate('/user-profile')
         }
     };
 
