@@ -42,7 +42,7 @@ const UserProfile = () => {
           <button onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
-          <button onClick={() => window.location.href = '/'}>
+          <button onClick={() => window.location.href = '/pendingapplications'}>
             Approve/Deny Grant Applications
           </button>
         </div>
