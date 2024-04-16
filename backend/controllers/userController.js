@@ -133,9 +133,10 @@ const patchUser = async(req, res) => {
         ...req.body
     })*/
 
-    const patchedUser = await User.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
+    const patchedUser = await User.findOneAndUpdate(
+        {_id: id},
+        {...req.body},
+        { new: true }); // return patched doc instead of original
     if(!patchUser){
         return res.status(404).json({error: 'User not found'})
     }
