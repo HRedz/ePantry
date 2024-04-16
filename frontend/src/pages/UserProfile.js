@@ -60,7 +60,7 @@ const UserProfile = () => {
           />
           <h1>Organization: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button onClick={() => window.location.href = '/'}>
+          <button onClick={() => window.location.href = '/grantstatus'}>
             View Grant Status
           </button>
           <button onClick={() => window.location.href = '/'}>
