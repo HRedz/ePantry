@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthContext } from "../hooks/AuthContextHook"
+import { useNavigate } from 'react-router-dom'
 
 const EditAccount = () => {
     const [name, setName] = useState('')
@@ -9,13 +10,17 @@ const EditAccount = () => {
     const {user} = useAuthContext()
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
+    const navigate = useNavigate()
 
     const handleName = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'PATCH',
-            body: {'name': JSON.stringify(name)},
+            body: JSON.stringify({
+                name: name
+            }),
             headers:{
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         })
@@ -35,8 +40,11 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: {'email': JSON.stringify(email)},
+            body: JSON.stringify({
+                email: email
+            }),
             headers:{
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         })
@@ -56,7 +64,9 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: {'passwrd': JSON.stringify(password)},
+            body: JSON.stringify({
+                passwrd: password
+            }),
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -77,7 +87,9 @@ const EditAccount = () => {
         e.preventDefault();
         const response = await fetch('/api/users/' + user.id, {
             method: 'POST',
-            body: {'description': JSON.stringify(desc)},
+            body: JSON.stringify({
+                description: desc
+            }),
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -112,7 +124,7 @@ const EditAccount = () => {
             <form onSubmit={handleEmail}>
                 <label>Email</label>
                 <input
-                    type="email" 
+                    type="text" 
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email}
                 ></input>
@@ -122,7 +134,7 @@ const EditAccount = () => {
             <form onSubmit={handlePassword}>
                 <label>Password</label>
                 <input
-                    type="password" 
+                    type="text" 
                     onChange={(e) => setPassword(e.target.value)} 
                     value={password}
                 ></input>
