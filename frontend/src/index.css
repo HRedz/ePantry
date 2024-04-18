@@ -430,13 +430,13 @@ header title1 {
 
 
 .navButton {
-  background-color: #6d9622; /* Set the background color */
-  color: white;              /* Set the text color to white */
+  background-color: #6d9622;
+  color: white;
   border: none;              /* Removes default border */
   padding: 10px 20px;        /* Adds padding around the text */
   border-radius: 20px;       /* Gives the button rounded corners */
-  font-size: 16px;           /* Optional: sets the text size */
-  cursor: pointer;           /* Changes the cursor on hover */
+  font-size: 16px;
+  cursor: pointer;
   transition: background-color 0.3s;
   margin: 20px;
 }
@@ -446,16 +446,15 @@ header title1 {
 }
 
 .DonorHistReqCardContents {
-  background-color: #ffffff; /* White background for better readability */
-  border: 2px solid #ccc; /* Light grey border */
-  border-radius: 8px; /* Rounded corners */
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   box-shadow: 0 6px 10px rgba(0,0,0,0.2); /* Subtle shadow for depth */
   padding: 20px; /* Spacing inside the card */
   margin: 10px; /* Space between cards */
   transition: all 0.3s ease-in-out; /* Smooth transition for any changes */
   max-width: 300px; /* Maximum width of each card */
   transition: opacity 3s ease-in-out; /* Transition for opacity change */
-  max-width: 300px;
 }
 
 .fading {
@@ -463,25 +462,25 @@ header title1 {
 }
 
 .DonorHistReqName {
-  font-size: 18px; /* Larger font size for name */
-  color: #333333; /* Dark grey color for text */
+  font-size: 18px;
+  color: #333333;
   margin-bottom: 10px; /* Space below the name */
   text-align: center;
   font-weight: 700;
 }
 
 .button-container {
-  display: flex; /* Flex layout for buttons */
+  display: flex;
   justify-content: space-around; /* Space distribution between buttons */
 }
 
 .approveDonorHistReq, .denyDonorHistReq, .revokeDonorHistReq {
-  background-color: #6d9622; /* Consistent theme color for buttons */
-  color: white; /* White text on buttons */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners for buttons */
+  background-color: #6d9622;
+  color: white;
+  border: none;
+  border-radius: 5px;
   padding: 8px 16px; /* Padding inside buttons */
-  cursor: pointer; /* Pointer cursor on hover */
+  cursor: pointer;
   transition: background-color 0.2s; /* Smooth color transition on hover */
 }
 
