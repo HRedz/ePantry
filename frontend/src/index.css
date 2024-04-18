@@ -398,3 +398,93 @@ header title1 {
 .radio-button {
   display: flex;
 }
+
+.pendingPermTextContainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.donorHistReqCardsContainer {
+  display: flex;
+  justify-content: space-between; /* Centers and spaces out the child containers */
+  width: 100%; /* Uses full width of the container */
+}
+
+.falseApprovalContainer, .trueApprovalContainer {
+  flex: 1; /* Each container takes up equal space */
+  display: flex;
+  flex-direction: column; /* Organizes the cards in a column */
+  padding: 10px; /* Adds some space inside the container */
+}
+
+.falseApprovalContainer {
+  align-items: left;
+}
+
+.trueApprovalContainer {
+  align-items: left;
+  margin-left: 25%;
+}
+
+
+.navButton {
+  background-color: #6d9622; /* Set the background color */
+  color: white;              /* Set the text color to white */
+  border: none;              /* Removes default border */
+  padding: 10px 20px;        /* Adds padding around the text */
+  border-radius: 20px;       /* Gives the button rounded corners */
+  font-size: 16px;           /* Optional: sets the text size */
+  cursor: pointer;           /* Changes the cursor on hover */
+  transition: background-color 0.3s;
+  margin: 20px;
+}
+
+.navButton:hover {
+  background-color: #5c7e1a;
+}
+
+.DonorHistReqCardContents {
+  background-color: #ffffff; /* White background for better readability */
+  border: 2px solid #ccc; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 6px 10px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  padding: 20px; /* Spacing inside the card */
+  margin: 10px; /* Space between cards */
+  transition: all 0.3s ease-in-out; /* Smooth transition for any changes */
+  max-width: 300px; /* Maximum width of each card */
+  transition: opacity 3s ease-in-out; /* Transition for opacity change */
+  max-width: 300px;
+}
+
+.fading {
+  opacity: 0;
+}
+
+.DonorHistReqName {
+  font-size: 18px; /* Larger font size for name */
+  color: #333333; /* Dark grey color for text */
+  margin-bottom: 10px; /* Space below the name */
+  text-align: center;
+  font-weight: 700;
+}
+
+.button-container {
+  display: flex; /* Flex layout for buttons */
+  justify-content: space-around; /* Space distribution between buttons */
+}
+
+.approveDonorHistReq, .denyDonorHistReq, .revokeDonorHistReq {
+  background-color: #6d9622; /* Consistent theme color for buttons */
+  color: white; /* White text on buttons */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  padding: 8px 16px; /* Padding inside buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s; /* Smooth color transition on hover */
+}
+
+.approveDonorHistReq:hover, .denyDonorHistReq:hover, .revokeDonorHistReq:hover {
+  background-color: #5a7c1b; /* Darken button on hover */
+}
