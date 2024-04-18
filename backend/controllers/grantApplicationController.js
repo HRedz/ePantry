@@ -77,8 +77,11 @@ const postGrantApplication = async(req, res) => {
         const grant = await Grant.findById(id)
         const grantId = grant._id
         const companyId = grant.companyId
+        const companyName = grant.companyName
+        const grantTitle = grant.title
+        const grantAmount = grant.amount
         const status = 'Applied'
-        const app = await Application.create({organizationId, grantId, companyId, applicationText, status})
+        const app = await Application.create({organizationId, grantId, companyId, applicationText, status, companyName, grantTitle, grantAmount})
         res.status(200).json(app)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -111,7 +114,7 @@ const approveGrantApplication = async(req, res) => {
     res.status(200).json(patchedApp)
 }
 
-/*const rejectGrantApplication = async(req, res) => {
+const rejectGrantApplication = async(req, res) => {
     const user = await User.findById(req.user._id)
     const {id} = req.params
 
@@ -134,7 +137,7 @@ const approveGrantApplication = async(req, res) => {
     })
 
     res.status(200).json(patchedApp)
-}*/
+}
 
 
 
@@ -142,5 +145,6 @@ module.exports = {
     getGrantApplication,
     getGrantApplications,
     postGrantApplication,
-    approveGrantApplication
+    approveGrantApplication,
+    rejectGrantApplication
 }

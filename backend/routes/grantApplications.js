@@ -3,7 +3,8 @@ const {
     getGrantApplication,
     getGrantApplications,
     postGrantApplication,
-    approveGrantApplication
+    approveGrantApplication,
+    rejectGrantApplication
 } = require('../controllers/grantApplicationController')
 const authorizeUser = require('../authorizeUser')
 
@@ -19,6 +20,7 @@ router.get('/view', getGrantApplications)
 // here id is id of grant applying to
 router.post('/apply/:id', postGrantApplication)
 
-router.patch('/view/:id', approveGrantApplication)
+router.patch('/approve/:id', approveGrantApplication)
+router.patch('/reject/:id', rejectGrantApplication)
 
 module.exports = router
