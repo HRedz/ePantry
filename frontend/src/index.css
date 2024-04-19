@@ -408,15 +408,15 @@ header title1 {
 
 .donorHistReqCardsContainer {
   display: flex;
-  justify-content: space-between; /* Centers and spaces out the child containers */
-  width: 100%; /* Uses full width of the container */
+  justify-content: space-between;
+  width: 100%;
 }
 
 .falseApprovalContainer, .trueApprovalContainer {
   flex: 1; /* Each container takes up equal space */
   display: flex;
   flex-direction: column; /* Organizes the cards in a column */
-  padding: 10px; /* Adds some space inside the container */
+  padding: 10px;
 }
 
 .falseApprovalContainer {
@@ -432,9 +432,9 @@ header title1 {
 .navButton {
   background-color: #6d9622;
   color: white;
-  border: none;              /* Removes default border */
-  padding: 10px 20px;        /* Adds padding around the text */
-  border-radius: 20px;       /* Gives the button rounded corners */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -449,12 +449,12 @@ header title1 {
   background-color: #ffffff;
   border: 2px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-  padding: 20px; /* Spacing inside the card */
-  margin: 10px; /* Space between cards */
-  transition: all 0.3s ease-in-out; /* Smooth transition for any changes */
-  max-width: 300px; /* Maximum width of each card */
-  transition: opacity 3s ease-in-out; /* Transition for opacity change */
+  box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+  max-width: 300px;
+  transition: opacity 3s ease-in-out;
 }
 
 .fading {
@@ -464,7 +464,7 @@ header title1 {
 .DonorHistReqName {
   font-size: 18px;
   color: #333333;
-  margin-bottom: 10px; /* Space below the name */
+  margin-bottom: 10px;
   text-align: center;
   font-weight: 700;
 }
@@ -479,11 +479,39 @@ header title1 {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 8px 16px; /* Padding inside buttons */
+  padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.2s; /* Smooth color transition on hover */
 }
 
 .approveDonorHistReq:hover, .denyDonorHistReq:hover, .revokeDonorHistReq:hover {
   background-color: #5a7c1b; /* Darken button on hover */
+}
+
+.donation-table-container {
+  width: 100%;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.donation-table th, .donation-table td {
+  text-align: left;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.donation-table th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.donation-table tbody tr:hover {
+  background-color: #f9f9f9;
 }
