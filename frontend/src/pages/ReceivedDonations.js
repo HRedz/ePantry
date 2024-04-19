@@ -14,11 +14,11 @@ const ReceivedDonations = () => {
               </tr>
             </thead>
             <tbody>
-              <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-              <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-              <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-              <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-              <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
+              <tr><td>pull from organization database</td><td>pull from organization database</td><td>pull from organization database</td></tr>
+              <tr><td>pull from organization database</td><td>pull from organization database</td><td>pull from organization database</td></tr>
+              <tr><td>pull from organization database</td><td>pull from organization database</td><td>pull from organization database</td></tr>
+              <tr><td>pull from organization database</td><td>pull from organization database</td><td>pull from organization database</td></tr>
+              <tr><td>pull from organization database</td><td>pull from organization database</td><td>pull from organization database</td></tr>
             </tbody>
           </table>
 
