@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useAuthContext } from '../hooks/AuthContextHook';
 import { useDonationsContext } from '../hooks/DonationContextHook';
+import { useOrgsContext } from '../hooks/OrgsContextHook';
 
 const DonationsHistoryPage = () => {
 
@@ -47,14 +48,22 @@ const DonationsHistoryPage = () => {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Donation</th>
                   </tr>
                 </thead>
                 <tbody>
                   {donations?.map((item) => (
                     <tr key={item._id}>
-                      <td data-title="Name">{item.donorName}</td>
-                      <td data-title="Amount">{item.amount}</td>
+                      <td data-title="Name">
+                        {item.donorName}
+                      </td>
+                      <td data-title="Type">
+                        {item.donationType}
+                      </td>
+                      <td data-title="Amount">
+                        {item.donationType === 'Monetary' ? `$${item.amount}` : item.donatedItems}  
+                      </td>
                     </tr>
                   ))}
                 </tbody>
