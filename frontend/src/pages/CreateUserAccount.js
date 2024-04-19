@@ -24,8 +24,8 @@ const CreateUserAccount = () => {
       //const response = await axios.post('/api/auth/signup', formData);
       //console.log(response.data);
       // Redirect or show success message
-    } catch (error) {
-      console.error(error.response.data);
+    } catch (err) {
+      console.error(err);
       // Handle errors or show error message
     }
   };
@@ -121,6 +121,7 @@ const CreateUserAccount = () => {
         />
       </div>
       <button type="submit">Create Account</button>
+      {error && <p className="error">{error}</p>}
     </form>
   );
 };
