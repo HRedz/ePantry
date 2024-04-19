@@ -15,6 +15,10 @@ const donateSchema = new Schema({
         required: true,
     },
 
+    orgName: {
+        type: String
+    },
+
     phone:{
         type: Number,
         required: true,

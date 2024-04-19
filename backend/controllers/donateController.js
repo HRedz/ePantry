@@ -88,7 +88,9 @@ const postDonation = async(req, res) => {
 
     try {
         const donationID = req.user._id.toString()
-        const donate = await Donate.create({donationID, donorName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, amount, paymentDate, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
+        const org = await User.findById(orgId)
+        const orgName = org.name
+        const donate = await Donate.create({donationID, donorName, orgName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, amount, paymentDate, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
         
         await donate.save();
         console.log('Saved>');
