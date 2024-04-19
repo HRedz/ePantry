@@ -81,25 +81,35 @@ const DonationsHistoryPage = () => {
       case 'company':
         return (
           <div style={{ textAlign: 'center', marginTop: '20px' }}>
-            <h2>Donation History</h2>
-            <table border="1" style={{ margin: 'auto' }}>
-              <thead>
-                <tr>
-                  <th>Organization</th>
-                  <th>Date</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-                <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-                <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-                <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-                <tr><td>pull from company database</td><td>pull from company database</td><td>pull from company database</td></tr>
-              </tbody>
-            </table>
+            <div className="donation-table-container">
+              <h2>Donation History</h2>
+              <table className="donation-table">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Type</th>
+                    <th>Donation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {donations?.map((item) => (
+                    <tr key={item._id}>
+                      <td data-title="Organization">
+                        {item.orgName}
+                      </td>
+                      <td data-title="Type">
+                        {item.donationType}
+                      </td>
+                      <td data-title="Donation">
+                        {item.donationType === 'Monetary' ? `$${item.amount}` : item.donatedItems}  
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-            <button onClick={() => window.location.href = '/user-profile'}>
+            <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
               Go Back
             </button>
 

@@ -24,10 +24,10 @@ const UserProfile = () => {
           />
           <h1>Individual: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button onClick={() => window.location.href = '/donationhistory'}>
+          <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
-          <button onClick={() => window.location.href = '/permissions'}>
+          <button className="navButton" onClick={() => window.location.href = '/permissions'}>
             View Pending Permissions
           </button>
         </div>
@@ -45,10 +45,10 @@ const UserProfile = () => {
           />
           <h1>Company: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button onClick={() => window.location.href = '/donationhistory'}>
+          <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
-          <button onClick={() => window.location.href = '/pendingapplications'}>
+          <button className="navButton" onClick={() => window.location.href = '/pendingapplications'}>
             Approve/Deny Grant Applications
           </button>
         </div>
@@ -66,10 +66,10 @@ const UserProfile = () => {
           />
           <h1>Organization: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button onClick={() => window.location.href = '/grantstatus'}>
+          <button className="navButton" onClick={() => window.location.href = '/grantstatus'}>
             View Grant Status
           </button>
-          <button onClick={() => window.location.href = '/receiveddonations'}>
+          <button className="navButton" onClick={() => window.location.href = '/receiveddonations'}>
             Donations Received
           </button>
         </div>
