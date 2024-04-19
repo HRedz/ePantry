@@ -19,6 +19,7 @@ import PendingPermissions from './pages/PendingPermissions'
 import EditAccount from './pages/EditAccount'
 import PendingApplications from './pages/PendingApplications'
 import GrantStatus from './pages/GrantStatus'
+import ReceivedDonations from './pages/ReceivedDonations'
 
 function App() {
   const { user } = useAuthContext()
@@ -94,6 +95,10 @@ function App() {
             <Route
               path="/grantstatus"
               element={<GrantStatus />}
+            />
+            <Route
+              path="/receiveddonations"
+              element={<ReceivedDonations />}
             />
           </Routes>
         </div>

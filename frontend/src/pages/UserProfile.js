@@ -69,7 +69,7 @@ const UserProfile = () => {
           <button onClick={() => window.location.href = '/grantstatus'}>
             View Grant Status
           </button>
-          <button onClick={() => window.location.href = '/'}>
+          <button onClick={() => window.location.href = '/receiveddonations'}>
             Donations Received
           </button>
         </div>
