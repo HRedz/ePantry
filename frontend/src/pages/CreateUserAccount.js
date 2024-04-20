@@ -91,7 +91,7 @@ const CreateUserAccount = () => {
         />
       </div>
       <div className="form-group">
-        <label>Password</label>
+        <label>Password (must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a symbol)</label>
         <input
           type="password"
           name="passwrd"

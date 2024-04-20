@@ -20,6 +20,7 @@ import EditAccount from './pages/EditAccount'
 import PendingApplications from './pages/PendingApplications'
 import GrantStatus from './pages/GrantStatus'
 import ReceivedDonations from './pages/ReceivedDonations'
+import DonorHistReqViewer from './pages/DonorHistoryReq'
 
 function App() {
   const { user } = useAuthContext()
@@ -99,6 +100,11 @@ function App() {
             <Route
               path="/receiveddonations"
               element={<ReceivedDonations />}
+            />
+            <Route 
+              path="/donorhistoryreq/:donorIdParam"
+              element={<DonorHistReqViewer />}
+              //element={user ? <CashDonation /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>

@@ -3,7 +3,8 @@ const {
     getDonations,
     postDonation,
     getDonation,
-    patchDonation
+    patchDonation,
+    getDonationsForHistReq
 } = require('../controllers/donateController')
 const authorizeUser = require('../authorizeUser')
 const donationValidate = require('../donationValidate')
@@ -15,6 +16,7 @@ router.use(donationValidate)
 
 
 router.get('/', getDonations)
+router.get('/histreq/:id', getDonationsForHistReq)
 
 router.post('/', postDonation)
 

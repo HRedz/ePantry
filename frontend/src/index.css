@@ -515,3 +515,39 @@ header title1 {
 .donation-table tbody tr:hover {
   background-color: #f9f9f9;
 }
+
+.error {
+  color: red;
+}
+
+.moreInfoButton{
+  display: block;
+  margin-top: 10px;
+  background-color: #6d9622;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 230px;
+  height: 25px;
+  padding: 10px;
+}
+
+.moreInfoButtonText{
+  margin-left: 17px;
+  color:#F9F9F9;
+}
+
+.viewHistButton{
+  display: block;
+  margin-top: 10px;
+  background-color: #6d9622;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 200px;
+  height: 25px;
+  padding: 10px;
+}
+
+.viewHistButtonText{
+  margin-left: 15px;
+  color:#F9F9F9;
+}

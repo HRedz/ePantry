@@ -16,6 +16,20 @@ const getDonations = async(req, res) => {
     }
 }
 
+//Get multiple donations
+const getDonationsForHistReq = async(req, res) => {
+    const {id} = req.params
+    const user = await User.findById(req.user._id)
+
+    if(user.type == 'organization'){
+        const donations = await Donate.find({'donationID' : id}).sort({createdAt: -1})
+        return res.status(200).json(donations)
+    }
+    else{
+        return res.status(401).json({error: 'Request is not authorized'})
+    }
+}
+
 //Post a donation
 const postDonation = async(req, res) => {
     const user = await User.findById(req.user._id)
@@ -155,5 +169,6 @@ module.exports = {
     getDonations,
     postDonation,
     getDonation,
-    patchDonation
+    patchDonation,
+    getDonationsForHistReq
 }

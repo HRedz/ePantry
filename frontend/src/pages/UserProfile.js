@@ -51,6 +51,9 @@ const UserProfile = () => {
           <button className="navButton" onClick={() => window.location.href = '/pendingapplications'}>
             Approve/Deny Grant Applications
           </button>
+          <button className="navButton" onClick={() => window.location.href = '/permissions'}>
+            View Pending Permissions
+          </button>
         </div>
         );
 
