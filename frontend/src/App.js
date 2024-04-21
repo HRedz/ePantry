@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import UserProfile from './pages/UserProfile'
 import { useAuthContext } from './hooks/AuthContextHook'
 
@@ -16,6 +16,13 @@ import Grants from './pages/Grants'
 import PendingDonations from './pages/PendingDonations'
 import GrantSubmit from './pages/GrantSubmit'
 import MyGrants from './pages/CompletedGrants'
+import DonationHistory from './pages/DonationsHistoryPage'
+import PendingPermissions from './pages/PendingPermissions'
+import EditAccount from './pages/EditAccount'
+import PendingApplications from './pages/PendingApplications'
+import GrantStatus from './pages/GrantStatus'
+import ReceivedDonations from './pages/ReceivedDonations'
+import DonorHistReqViewer from './pages/DonorHistoryReq'
 
 function App() {
   const { user } = useAuthContext()
@@ -31,12 +38,14 @@ function App() {
               element={<Home />}
             />
             <Route 
-              path="/cashdonation"
+              path="/cashdonation/:orgIdParam"
               element={<CashDonation />}
+              //element={user ? <CashDonation /> : <Navigate to="/login" />}
             />
             <Route 
-              path="/fooddonation"
+              path="/fooddonation/:orgIdParam"
               element={<FoodDonation />}
+              //element={user ? <FoodDonation /> : <Navigate to="/login" />}
             />
             <Route 
               path="/donationSubmit"
@@ -44,11 +53,11 @@ function App() {
             />
             <Route
               path="/create-account" 
-              element={<CreateUserAccount />} 
+              element={!user ? <CreateUserAccount /> : <Navigate to="/user-profile" />}
             />
             <Route
               path="/login"
-              element={<Login />}
+              element={!user ? <Login /> : <Navigate to="/user-profile" />}
             />
             <Route 
               path="/user-profile" 
@@ -77,6 +86,34 @@ function App() {
             <Route 
               path="/completedgrants"
               element={<MyGrants />}
+            <Route 
+              path="donationhistory" 
+              element={<DonationHistory />}
+            />
+            <Route 
+              path="permissions" 
+              element={<PendingPermissions />}
+            />
+            <Route
+              path="/editaccount"
+              element={<EditAccount />}
+            />
+            <Route
+              path="/pendingapplications"
+              element={<PendingApplications />}
+            />
+            <Route
+              path="/grantstatus"
+              element={<GrantStatus />}
+            />
+            <Route
+              path="/receiveddonations"
+              element={<ReceivedDonations />}
+            />
+            <Route 
+              path="/donorhistoryreq/:donorIdParam"
+              element={<DonorHistReqViewer />}
+              //element={user ? <CashDonation /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>

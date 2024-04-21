@@ -21,6 +21,18 @@ const applicationSchema = new Schema({
     },
     status: {
         type: String
+    },
+    companyName: {
+        type: String,
+        required: true
+    },
+    grantTitle: {
+        type: String,
+        required: true
+    },
+    grantAmount: {
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 

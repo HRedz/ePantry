@@ -22,6 +22,14 @@ const userSchema = new Schema({
         type: String,
         required: true
     },    
+    phone: {
+      type: Number,
+      required: true
+    },
+    address: {
+      type: String,
+      required: true
+    },
     donorHist: [
         {
             donationID: Number
@@ -64,8 +72,8 @@ userSchema.statics.logIn = async function(email, passwrd) {
     return user
 }
 
-userSchema.statics.signUp = async function(type, name, email, passwrd) {
-    if (!type || !name|| !email || !passwrd) {
+userSchema.statics.signUp = async function(type, name, email, passwrd, phone, address) {
+    if (!type || !name|| !email || !passwrd || !phone || !address) {
       throw Error('All fields must be filled')
     }
     // validate type and name?
@@ -85,7 +93,7 @@ userSchema.statics.signUp = async function(type, name, email, passwrd) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(passwrd, salt)
   
-    const user = await this.create({ type, name, email, passwrd: hash })
+    const user = await this.create({ type, name, email, passwrd: hash, phone, address })
   
     return user
 }

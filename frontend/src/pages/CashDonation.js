@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useAuthContext } from '../hooks/AuthContextHook'
 
 const CashDonation = () => {
     const [name, setName] = useState('')
@@ -6,11 +8,48 @@ const CashDonation = () => {
     const [exp, setExp] = useState('')
     const [cvv, setCVV] = useState('')
     const [zip, setZip] = useState('')
+    const [amount, setAmount] = useState('')
+    const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
     let errorString = ''
     let destination = '/donationsubmit'
+
+    const { user } = useAuthContext()
+    const location = useLocation();
+    const navigate = useNavigate()
+    //let { org } = location.state;
+    let { orgIdParam } = useParams();
+
+    if(!user){
+        return (
+            <p>Please log in or sign up.</p>
+        )
+    }
       
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const donationID = user.id
+        var phone
+        if(user.phone){
+            phone = user.phone
+        }
+        else{
+            phone = '1234567890'
+        }
+        var address
+        if(user.address){
+            address = user.address
+        }
+        else{
+            address = 'address'
+        }
+        
+        const donationType = 'Monetary'
+        //const orgId = org._id
+        const orgId = orgIdParam
+        // makes date todays date
+        const paymentDate = new Date()
 
         if (name.trim() === "" ||
             cardnum.trim() === "" ||
@@ -25,9 +64,37 @@ const CashDonation = () => {
         setExp('')
         setCVV('')
         setZip('')
+        setAmount('')
         let destination = '/cashsubmit'
         }
 
+        const donorName = name
+        const creditCardNum = cardnum
+        const creditCardExp = exp
+        const creditCardCVV = cvv
+        const zipcode = zip
+
+        const donation = {donationID, donorName, phone, address, donationType, orgId, amount, paymentDate, creditCardNum, creditCardExp, creditCardCVV, zipcode}
+        console.log(donation)
+
+        const response = await fetch('/api/donate', {
+            method: 'POST',
+            body: JSON.stringify(donation),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setError(json.error)
+            setEmptyFields(json.emptyFields)
+        }
+
+        if(response.ok){
+            navigate('/donationsubmit')
+        }
     }
 
     return (
@@ -38,6 +105,13 @@ const CashDonation = () => {
                 type="text" 
                 onChange={(e) => setName(e.target.value)} 
                 value={name}
+            ></input>
+
+            <label>Amount</label>
+                <input
+                    type="number" 
+                    onChange={(e) => setAmount(e.target.value)} 
+                    value={amount}
             ></input>
 
             <label>Credit Card Number</label>
@@ -72,10 +146,10 @@ const CashDonation = () => {
                 onChange={(e) => setZip(e.target.value)} 
                 value={zip}
             ></input>
-
             <container2>
-                <button><a href={destination}>Submit</a></button>
+                <button onClick={handleSubmit}>Submit</button>
             </container2>
+            {error && <div className="error">{error}</div>}
        </form>
     )
  }

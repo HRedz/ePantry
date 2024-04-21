@@ -9,6 +9,8 @@ const CreateUserAccount = () => {
     name: '',
     email: '',
     passwrd: '',
+    phone: '',
+    address: ''
   });
 
   const handleChange = (e) => {
@@ -18,12 +20,12 @@ const CreateUserAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signup(formData.type, formData.name, formData.email, formData.passwrd)
+      await signup(formData.type, formData.name, formData.email, formData.passwrd, formData.phone, formData.address)
       //const response = await axios.post('/api/auth/signup', formData);
       //console.log(response.data);
       // Redirect or show success message
-    } catch (error) {
-      console.error(error.response.data);
+    } catch (err) {
+      console.error(err);
       // Handle errors or show error message
     }
   };
@@ -33,14 +35,40 @@ const CreateUserAccount = () => {
     <form className="create-user-form" onSubmit={handleSubmit}>
       <h2>Create User Account</h2>
       <div className="form-group">
-        <label>Type</label>
+        <label>User Type</label>
+        <div class="radio-button">
         <input
-          type="text"
+          type="radio"
+          id = "organization"
           name="type"
-          value={formData.type}
+          value="organization"
           onChange={handleChange}
           required
         />
+        <label for="organization">Not-For-Profit Organization</label>
+        </div>
+        <div class="radio-button">
+        <input
+          type="radio"
+          id = "company"
+          name="type"
+          value="company"
+          onChange={handleChange}
+          required
+        />
+        <label for="company">Company Donor</label>
+        </div>
+        <div class="radio-button">
+        <input
+          type="radio"
+          id = "individual"
+          name="type"
+          value="individual"
+          onChange={handleChange}
+          required
+        />
+        <label for="individual">Individual Donor</label>
+        </div>
       </div>
       <div className="form-group">
         <label>Name</label>
@@ -63,7 +91,7 @@ const CreateUserAccount = () => {
         />
       </div>
       <div className="form-group">
-        <label>Password</label>
+        <label>Password (must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a symbol)</label>
         <input
           type="password"
           name="passwrd"
@@ -72,7 +100,28 @@ const CreateUserAccount = () => {
           required
         />
       </div>
+      <div className="form-group">
+        <label>Phone Number</label>
+        <input
+          type="number"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Address</label>
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
+      </div>
       <button type="submit">Create Account</button>
+      {error && <p className="error">{error}</p>}
     </form>
   );
 };

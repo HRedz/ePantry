@@ -133,9 +133,10 @@ const patchUser = async(req, res) => {
         ...req.body
     })*/
 
-    const patchedUser = await User.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
+    const patchedUser = await User.findOneAndUpdate(
+        {_id: id},
+        {...req.body},
+        { new: true }); // return patched doc instead of original
     if(!patchUser){
         return res.status(404).json({error: 'User not found'})
     }
@@ -179,24 +180,26 @@ const logInUser = async (req, res) => {
 
         const type = user.type;
         const name = user.name;
+        const phone = user.phone;
+        const address = user.address;
 
-        res.status(200).json({id, type, name, email, token})
+        res.status(200).json({id, type, name, email, phone, address, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
 }
   
 const signUpUser = async (req, res) => {
-    const {type, name, email, passwrd} = req.body
+    const {type, name, email, passwrd, phone, address} = req.body
 
     try {
-        const user = await User.signUp(type, name, email, passwrd)
+        const user = await User.signUp(type, name, email, passwrd, phone, address)
 
         const token = createToken(user._id)
 
         const id = user._id.toString()
 
-        res.status(200).json({id, type, name, email, token})
+        res.status(200).json({id, type, name, email, phone, address, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }

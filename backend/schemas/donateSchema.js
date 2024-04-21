@@ -15,6 +15,10 @@ const donateSchema = new Schema({
         required: true,
     },
 
+    orgName: {
+        type: String
+    },
+
     phone:{
         type: Number,
         required: true,
@@ -66,6 +70,16 @@ const donateSchema = new Schema({
     zipcode:{
         type: String,
         minlength: [5, 'US Zipcode must be 5 digits. Please try again'],
+        required: function () { return this.donationType === 'Monetary'; },      
+    },
+
+    amount:{
+        type: Number,
+        required: function () { return this.donationType === 'Monetary'; },      
+    },
+
+    paymentDate:{
+        type: Date,
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
