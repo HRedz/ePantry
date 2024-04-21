@@ -1,43 +1,56 @@
-import React, { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect } from 'react';
+import { useAuthContext } from '../hooks/AuthContextHook';
+import { useDonationsContext } from '../hooks/DonationContextHook';
 import axios from 'axios';
 
 const ReceivedDonations = () => {
-  const [donations, setDonations] = useState([]);
+  const { donations, dispatch } = useDonationsContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const fetchDonations = async () => {
-      try {
-        const response = await axios.get('/api/donations');
-        setDonations(response.data);
-      } catch (error) {
-        console.error('Failed to fetch donations:', error);
+      const response2 = await fetch('/api/donate/', {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${user.token}` }
+      })
+      const json2 = await response2.json()
+      if (response2.ok) {
+        dispatch({ type: 'SET_DONATIONS', payload: json2 })
+        console.log(json2)
       }
-    };
+    }
 
-    fetchDonations();
-  }, []);
+    if (user) {
+      fetchDonations()
+    }
+  }, [user, dispatch])
 
   return (
     <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <h2>Received Donations</h2>
-      <table border="1" style={{ margin: 'auto' }}>
-        <thead>
-          <tr>
-            <th>Donor</th>
-            <th>Date</th>
-            <th>Donation</th>
-          </tr>
-        </thead>
-        <tbody>
-          {donations.map((donation) => (
-            <tr key={donation.id}>
-              <td>{donation.donorName}</td>
-              <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
-              <td>{donation.amount}</td>
+      <div className="donation-table-container">
+        <h2>Received Donations</h2>
+        <table className="donation-table">
+          <thead>
+            <tr>
+              <th>Donor</th>
+              <th>Date</th>
+              <th>Donation</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {donations?.map((donation) => (
+              <tr key={donation._id}>
+                <td>{donation.donorName}</td>
+                <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
+                <td data-title="Donation">
+                  {donation.donationType === 'Monetary' ? `$${donation.amount}` : donation.donatedItems}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
         Go Back
