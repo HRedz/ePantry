@@ -15,7 +15,7 @@ const MyGrants = () => {
             const response = await fetch('/api/grantapplications', {
                 headers: {'Authorization': `Bearer ${user.token}`},
             })
-            const json = await responseesponse.json()
+            const json = await response.json()
 
 
             if(response.ok) {

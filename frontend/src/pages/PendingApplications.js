@@ -8,14 +8,14 @@ const GrantStatus = () => {
 
   useEffect(() => {
     const fetchApps = async () => {
-      const response = await fetch('/api/grantapplications/view', {
-        headers: {'Authorization': `Bearer ${user.token}`},
+      const response = await fetch('/api/grantapplications/', {
+        headers: { 'Authorization': `Bearer ${user.token}` },
       });
       const json = await response.json();
 
       // Display the latest five applications
       if (response.ok) {
-        dispatch({ type: 'SET_GRANTS', payload: json.slice(0, 5) });
+        dispatch({ type: 'SET_GRANTS', payload: json });
         console.log(json);
       }
     };
@@ -60,7 +60,7 @@ const GrantStatus = () => {
 
   if (!grants) return <p>Loading applications...</p>;
 
-  
+
   return (
     <div style={{ textAlign: 'left', marginTop: '20px' }}>
       <div className="grant-application-container">
@@ -73,16 +73,18 @@ const GrantStatus = () => {
             </tr>
           </thead>
           <tbody>
-            {grants.map(({ id, grantTitle, grantAmount }) => (
-              <tr key={id}>
-                <td data-title="Grant Title">{grantTitle}</td>
-                <td data-title="Amount">{`$${grantAmount}`}</td>
-                <td>
-                  <button className="navButton" onClick={() => handleApprove(id)} style={{ margin: '5px' }}>Approve</button>
-                  <button className="navButton" onClick={() => handleReject(id)} style={{ margin: '5px' }}>Deny</button>
-                </td>
-              </tr>
-            ))}
+            {
+              grants?.filter(grant => grant.status === 'Applied').map((grant) => (
+                <tr key={grant._id}>
+                  <td data-title="Grant Title">{grant.grantTitle}</td>
+                  <td data-title="Amount">{`$${grant.grantAmount}`}</td>
+                  <td>
+                    <button className="navButton" onClick={() => handleApprove(grant._id)} style={{ margin: '5px' }}>Approve</button>
+                    <button className="navButton" onClick={() => handleReject(grant._id)} style={{ margin: '5px' }}>Deny</button>
+                  </td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>
