@@ -1,56 +1,96 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useAuthContext } from "../hooks/AuthContextHook";
+import { useGrantsContext } from "../hooks/GrantsContextHook";
 
-const PendingApplications = () => {
-  // fill space until backend is added
-  const [grants, setGrants] = useState([
-    { id: 1, name: "Grant 1 will pull from database" },
-    { id: 2, name: "Grant 2 will pull from database" },
-    { id: 3, name: "Grant 3 will pull from database" },
-    { id: 4, name: "Grant 4 will pull from database" },
-    { id: 5, name: "Grant 5 will pull from database" }
-  ]);
+const GrantStatus = () => {
+  const { user } = useAuthContext();
+  const { grants, dispatch } = useGrantsContext();
 
-  // generic action for approve button
-  const handleApprove = id => {
-    const newGrants = grants.map(grant => {
-      if (grant.id === id) {
-        return { ...grant, status: "Approved" };
+  useEffect(() => {
+    const fetchApps = async () => {
+      const response = await fetch('/api/grantapplications/view', {
+        headers: {'Authorization': `Bearer ${user.token}`},
+      });
+      const json = await response.json();
+
+      // Display the latest five applications
+      if (response.ok) {
+        dispatch({ type: 'SET_GRANTS', payload: json.slice(0, 5) });
+        console.log(json);
       }
-      return grant;
+    };
+
+    if (user) {
+      fetchApps();
+    }
+  }, [user, dispatch]);
+
+  const handleApprove = async (id) => {
+    const response = await fetch(`/api/grantapplications/approve/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${user.token}`,
+        'Content-Type': 'application/json',
+      }
     });
-    setGrants(newGrants);
+    if (response.ok) {
+      dispatch({ type: 'SET_GRANTS', payload: grants.map(grant => grant.id === id ? { ...grant, status: 'Approved' } : grant) });
+    } else {
+      const error = await response.json();
+      alert(error.message || 'Failed to approve application');
+    }
   };
 
-  // generic action for deny button
-  const handleDeny = id => {
-    const newGrants = grants.map(grant => {
-      if (grant.id === id) {
-        return { ...grant, status: "Denied" };
+  const handleReject = async (id) => {
+    const response = await fetch(`/api/grantapplications/reject/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${user.token}`,
+        'Content-Type': 'application/json',
       }
-      return grant;
     });
-    setGrants(newGrants);
+    if (response.ok) {
+      dispatch({ type: 'SET_GRANTS', payload: grants.map(grant => grant.id === id ? { ...grant, status: 'Rejected' } : grant) });
+    } else {
+      const error = await response.json();
+      alert(error.message || 'Failed to reject application');
+    }
   };
 
+
+  if (!grants) return <p>Loading applications...</p>;
+
+  
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <h2>Grants Pending Approval/Denial</h2>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {grants.map(grant => (
-          <li key={grant.id} style={{ margin: '10px', padding: '10px' }}>
-            {grant.name} - Status: {grant.status}
-            <div style={{ marginTop: '10px' }}>
-              <button onClick={() => handleApprove(grant.id)} style={{ display: 'block', margin: '5px auto' }}>Approve</button>
-              <button onClick={() => handleDeny(grant.id)} style={{ display: 'block', margin: '5px auto' }}>Deny</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <button onClick={() => window.location.href = '/user-profile'}>
+    <div style={{ textAlign: 'left', marginTop: '20px' }}>
+      <div className="grant-application-container">
+        <h2>Grant Application Status</h2>
+        <table className="grant-table">
+          <thead>
+            <tr>
+              <th>Grant Title</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {grants.map(({ id, grantTitle, grantAmount }) => (
+              <tr key={id}>
+                <td data-title="Grant Title">{grantTitle}</td>
+                <td data-title="Amount">{`$${grantAmount}`}</td>
+                <td>
+                  <button className="navButton" onClick={() => handleApprove(id)} style={{ margin: '5px' }}>Approve</button>
+                  <button className="navButton" onClick={() => handleReject(id)} style={{ margin: '5px' }}>Deny</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <button className="navButton" onClick={() => window.location.href = '/user-profile'} style={{ marginTop: '20px' }}>
         Go Back
       </button>
     </div>
   );
-}
+};
 
-export default PendingApplications;
+export default GrantStatus;
