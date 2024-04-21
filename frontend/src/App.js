@@ -86,8 +86,9 @@ function App() {
             <Route 
               path="/completedgrants"
               element={<MyGrants />}
+            />
             <Route 
-              path="donationhistory" 
+              path="donationhistory"
               element={<DonationHistory />}
             />
             <Route 

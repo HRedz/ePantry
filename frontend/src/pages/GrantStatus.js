@@ -23,7 +23,7 @@ const GrantStatus = () => {
 
   useEffect(() => {
     const fetchApps = async () => {
-      const response = await fetch('/api/grantapplications/view', {
+      const response = await fetch('/api/grantapplications', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()
@@ -31,6 +31,7 @@ const GrantStatus = () => {
       if (response.ok) {
         setGrants(json)
         console.log(json)
+        
       }
     }
 

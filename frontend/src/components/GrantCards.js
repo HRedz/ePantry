@@ -19,8 +19,12 @@ const GrantCards = ({ grant }) => {
     const grantId = grant._id
     const companyId = grant.companyId
     const applicationText = 'test app'
+    const companyName = grant.companyName
+    const grantTitle = grant.grantTitle
+    const grantAmount = grant.amount
+    const status = 'Applied'
 
-    const application = {userId, grantId, companyId, applicationText}
+    const application = {userId, grantId, companyId, applicationText, status, companyName, grantTitle, grantAmount}
     console.log(application)
 
     const response = await fetch('/api/grantapplications/' + grant._id, {

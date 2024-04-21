@@ -294,6 +294,35 @@ header title1 {
   font-size: 14px;
 }
 
+.applications {
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+.applicationcards {
+  max-width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  background: #F9F9F9;
+  border-radius: 10px;
+  color: #454E48;
+  font-family: "Inter";
+}
+.grantTitle {
+  font-size: 18px;
+}
+.applicationBody {
+  font-size: 14px;
+}
+.applicationStatus {
+  padding-top: 5px;
+  color: #454E48;
+  font-family: "Inter";
+  font-size: 14px;
+}
+
 .approveButton {
   margin-top: 10px;
   background-color: #6d9622;
