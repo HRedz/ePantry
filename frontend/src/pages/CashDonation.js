@@ -25,6 +25,12 @@ const CashDonation = () => {
             <p>Please log in or sign up.</p>
         )
     }
+
+    if(user.type != 'individual' && user.type != 'company'){
+        return (
+            <p>Not Authorized</p>
+        )
+    }
       
     const handleSubmit = async (e) => {
         e.preventDefault()

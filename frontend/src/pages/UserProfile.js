@@ -24,6 +24,9 @@ const UserProfile = () => {
           />
           <h1>Individual: {user.name}</h1>
           <p>Email: {user.email}</p>
+          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+            Edit Account Info
+          </button>
           <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
@@ -45,6 +48,9 @@ const UserProfile = () => {
           />
           <h1>Company: {user.name}</h1>
           <p>Email: {user.email}</p>
+          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+            Edit Account Info
+          </button>
           <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
             View Donation History
           </button>
@@ -69,6 +75,9 @@ const UserProfile = () => {
           />
           <h1>Organization: {user.name}</h1>
           <p>Email: {user.email}</p>
+          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+            Edit Account Info
+          </button>
           <button className="navButton" onClick={() => window.location.href = '/grantstatus'}>
             View Grant Status
           </button>

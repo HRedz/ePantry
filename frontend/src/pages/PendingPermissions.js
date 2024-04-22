@@ -28,33 +28,42 @@ const PendingPermissions = () => {
 
   return (
     <div>
-      <div className='pendingPermTextContainer'>
-        <p>Organizations requesting to view your history:</p>
-        <p>Organizations approved to view your history:</p>
-      </div>
-      <div className="donorHistReqCardsContainer">
-        <div className="falseApprovalContainer">
-          {donorHistReqs && donorHistReqs
-            .filter(donorHistReq => donorHistReq.approved === false) // Filtering condition
-            .map(donorHistReq => (
-              <DonorHistReqCards key={donorHistReq._id} donorHistReq={donorHistReq} />
-            ))
-          }
+      {user && user.type != 'organization' && (
+        <div>
+          <div className='pendingPermTextContainer'>
+            <p>Organizations requesting to view your history:</p>
+            <p>Organizations approved to view your history:</p>
+          </div>
+          <div className="donorHistReqCardsContainer">
+            <div className="falseApprovalContainer">
+              {donorHistReqs && donorHistReqs
+                .filter(donorHistReq => donorHistReq.approved === false) // Filtering condition
+                .map(donorHistReq => (
+                  <DonorHistReqCards key={donorHistReq._id} donorHistReq={donorHistReq} />
+                ))
+              }
+            </div>
+            <div className="trueApprovalContainer">
+              {donorHistReqs && donorHistReqs
+                .filter(donorHistReq => donorHistReq.approved === true) // Filtering condition
+                .map(donorHistReq => (
+                  <DonorHistReqCards key={donorHistReq._id} donorHistReq={donorHistReq} />
+                ))
+              }
+            </div>
+          </div>
+            <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+              Go Back
+            </button>
         </div>
-        <div className="trueApprovalContainer">
-          {donorHistReqs && donorHistReqs
-            .filter(donorHistReq => donorHistReq.approved === true) // Filtering condition
-            .map(donorHistReq => (
-              <DonorHistReqCards key={donorHistReq._id} donorHistReq={donorHistReq} />
-            ))
-          }
-        </div>
-      </div>
-        <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
-          Go Back
-        </button>
+      )}
+      {user && user.type == 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
-
 
   );
 }

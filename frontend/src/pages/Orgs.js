@@ -26,17 +26,27 @@ const Orgs = () => {
   }, [user, dispatch])
 
   return (
-    <div className="orgs">
-        <div>
-            <p>Available Organizations</p>
-        </div>
-        <div >
-            {orgs && orgs.map((org) => (
-                <div className="orgcards">
-                    <OrgCards key={org._id} org={org} />
-                </div>
-            ))}
-        </div>
+    <div>
+      {user && user.type != 'organization' && (
+        <div className="orgs">
+          <div>
+              <p>Available Not-For-Profits</p>
+          </div>
+          <div >
+              {orgs && orgs.map((org) => (
+                  <div className="orgcards">
+                      <OrgCards key={org._id} org={org} />
+                  </div>
+              ))}
+          </div>
+      </div>
+      )}
+      {user && user.type == 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
   )
 }

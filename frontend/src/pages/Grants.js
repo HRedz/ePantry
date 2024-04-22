@@ -62,6 +62,12 @@ const Grants = () => {
             </div>
         </div> 
       )}
+      {user && user.type == 'individual' && (
+          <p>Not Authorized</p>
+      )}
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )}
       
     </div>
   )

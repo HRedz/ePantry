@@ -32,17 +32,27 @@ const PendingDonations = () => {
   }, [user, dispatch])
 
   return (
-    <div className="pendingdonations">
-        <div>
-            <p>Pending Donations</p>
-        </div>
-        <div >
-            {filteredDonations && filteredDonations.map((donation) => (
-                <div className="donationcards">
-                    <DonationCards key={donation._id} donation={donation} />
-                </div>
-            ))}
-        </div>
+    <div>
+      {user && user.type == 'organization' && (
+        <div className="pendingdonations">
+          <div>
+              <p>Pending Donations</p>
+          </div>
+          <div >
+              {filteredDonations && filteredDonations.map((donation) => (
+                  <div className="donationcards">
+                      <DonationCards key={donation._id} donation={donation} />
+                  </div>
+              ))}
+          </div>
+      </div>
+      )}
+      {user && user.type != 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
   )
 }

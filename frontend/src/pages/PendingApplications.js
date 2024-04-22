@@ -62,35 +62,45 @@ const GrantStatus = () => {
 
 
   return (
-    <div style={{ textAlign: 'left', marginTop: '20px' }}>
-      <div className="grant-application-container">
-        <h2>Grant Application Status</h2>
-        <table className="grant-table">
-          <thead>
-            <tr>
-              <th>Grant Title</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              grants?.filter(grant => grant.status === 'Applied').map((grant) => (
-                <tr key={grant._id}>
-                  <td data-title="Grant Title">{grant.grantTitle}</td>
-                  <td data-title="Amount">{`$${grant.grantAmount}`}</td>
-                  <td>
-                    <button className="navButton" onClick={() => handleApprove(grant._id)} style={{ margin: '5px' }}>Approve</button>
-                    <button className="navButton" onClick={() => handleReject(grant._id)} style={{ margin: '5px' }}>Deny</button>
-                  </td>
+    <div>
+      {user && user.type == 'company' && (
+        <div style={{ textAlign: 'left', marginTop: '20px' }}>
+          <div className="grant-application-container">
+            <h2>Grant Application Status</h2>
+            <table className="grant-table">
+              <thead>
+                <tr>
+                  <th>Grant Title</th>
+                  <th>Amount</th>
                 </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-      <button className="navButton" onClick={() => window.location.href = '/user-profile'} style={{ marginTop: '20px' }}>
-        Go Back
-      </button>
+              </thead>
+              <tbody>
+                {
+                  grants?.filter(grant => grant.status === 'Applied').map((grant) => (
+                    <tr key={grant._id}>
+                      <td data-title="Grant Title">{grant.grantTitle}</td>
+                      <td data-title="Amount">{`$${grant.grantAmount}`}</td>
+                      <td>
+                        <button className="navButton" onClick={() => handleApprove(grant._id)} style={{ margin: '5px' }}>Approve</button>
+                        <button className="navButton" onClick={() => handleReject(grant._id)} style={{ margin: '5px' }}>Deny</button>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <button className="navButton" onClick={() => window.location.href = '/user-profile'} style={{ marginTop: '20px' }}>
+            Go Back
+          </button>
+        </div>
+      )}
+      {user && user.type != 'company' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
   );
 };

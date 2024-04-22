@@ -89,6 +89,7 @@ const DonationCards = ({ donation }) => {
       }
     })
     const json = await histReq.json()
+    window.location.reload();
     //console.log(json)
   }
 

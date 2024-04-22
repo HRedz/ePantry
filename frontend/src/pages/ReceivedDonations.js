@@ -27,34 +27,44 @@ const ReceivedDonations = () => {
   }, [user, dispatch])
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <div className="donation-table-container">
-        <h2>Received Donations</h2>
-        <table className="donation-table">
-          <thead>
-            <tr>
-              <th>Donor</th>
-              <th>Date</th>
-              <th>Donation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations?.map((donation) => (
-              <tr key={donation._id}>
-                <td>{donation.donorName}</td>
-                <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
-                <td data-title="Donation">
-                  {donation.donationType === 'Monetary' ? `$${donation.amount}` : donation.donatedItems}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div>
+      {user && user.type == 'organization' && (
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <div className="donation-table-container">
+            <h2>Received Donations</h2>
+            <table className="donation-table">
+              <thead>
+                <tr>
+                  <th>Donor</th>
+                  <th>Date</th>
+                  <th>Donation</th>
+                </tr>
+              </thead>
+              <tbody>
+                {donations?.map((donation) => (
+                  <tr key={donation._id}>
+                    <td>{donation.donorName}</td>
+                    <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
+                    <td data-title="Donation">
+                      {donation.donationType === 'Monetary' ? `$${donation.amount}` : donation.donatedItems}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-      <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
-        Go Back
-      </button>
+          <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+            Go Back
+          </button>
+        </div>
+      )}
+      {user && user.type != 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )}
     </div>
   );
 };

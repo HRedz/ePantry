@@ -29,7 +29,7 @@ const MyGrants = () => {
             fetchData()
         }
 
-    }, [])
+    }, [user])
     console.log(applications)
 
     return (
@@ -50,6 +50,12 @@ const MyGrants = () => {
                     </div>
                 </div>
             )}
+            {user && user.type != 'organization' && (
+                <p>Not Authorized</p>
+            )} 
+            {!user && (
+                <p>Please log in or sign up.</p>
+            )} 
         </div>
     )
 }

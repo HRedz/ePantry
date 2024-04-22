@@ -20,23 +20,33 @@ const Companies = () => {
       }
     }
 
-    if (user) {
+    if (user && user.type == 'organization') {
       fetchCompanies()
     }
   }, [user, dispatch])
 
   return (
-    <div className="companies">
-        <div>
-            <p>Available Companies</p>
+    <div>
+      {user &&  user.type == 'organization' && (
+        <div className="companies">
+          <div>
+              <p>Available Companies</p>
+          </div>
+          <div >
+              {companies && companies.map((company) => (
+                  <div className="companycards">
+                      <CompanyCards key={company._id} company={company} />
+                  </div>
+              ))}
+          </div>
         </div>
-        <div >
-            {companies && companies.map((company) => (
-                <div className="companycards">
-                    <CompanyCards key={company._id} company={company} />
-                </div>
-            ))}
-        </div>
+      )}
+      {user && user.type != 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
   )
 }

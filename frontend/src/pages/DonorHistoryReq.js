@@ -31,17 +31,27 @@ const DonorHistoryReqViewer = () => {
   }, [user])
 
   return (
-    <div className="pendingdonations">
-        <div>
-            <p>Donor History</p>
+    <div>
+      {user && user.type == 'organization' && (
+        <div className="pendingdonations">
+            <div>
+                <p>Donor History</p>
+            </div>
+            <div >
+                {donations && donations.map((donation) => (
+                    <div className="donationcards">
+                        <DonationCardsHistReq key={donation._id} donation={donation} />
+                    </div>
+                ))}
+            </div>
         </div>
-        <div >
-            {donations && donations.map((donation) => (
-                <div className="donationcards">
-                    <DonationCardsHistReq key={donation._id} donation={donation} />
-                </div>
-            ))}
-        </div>
+      )}
+      {user && user.type != 'organization' && (
+        <p>Not Authorized</p>
+      )} 
+      {!user && (
+        <p>Please log in or sign up.</p>
+      )} 
     </div>
   )
 }
