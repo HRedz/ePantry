@@ -113,22 +113,22 @@ header title1 {
   box-sizing: border-box;
 }
 
-.donation split{
+.donation split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.donation container{
+.donation container {
   text-align:left;
 }
 
-.donation container2{
+.donation container2 {
   display:flex;
   justify-content:center;
 }
 
-.donation button{
+.donation button {
   padding: 12px 20px;
   background-color:#6d9622;
   border-radius: 12px;
@@ -301,6 +301,7 @@ header title1 {
   max-width: 70%;
   margin: auto;
 }
+
 .applicationcards {
   max-width: 100%;
   margin: 15px auto;
@@ -363,7 +364,12 @@ header title1 {
   width: 130px;
   height: 25px;
   padding: 10px;
-  color:#F9F9F9; 
+  color:#F9F9F9;
+  cursor: pointer;
+}
+
+.donateButton:hover {
+  background-color: #5c7e1a;
 }
 
 .donateCashButtonText {
