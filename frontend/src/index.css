@@ -592,6 +592,12 @@ header title1 {
   max-height: 100vh;
 }
 
+.create-user-form {
+  margin-top: 20px;
+  min-height: 85vh;
+  max-height: 85vh;
+}
+
 .login-container form {
   width: 100%;
   max-width: 360px;
@@ -608,7 +614,7 @@ header title1 {
 }
 
 .login-container .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .login-container label {
@@ -618,7 +624,9 @@ header title1 {
 }
 
 .login-container input[type="email"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.login-container input[type="text"],
+.login-container input[type="number"] {
   width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #ccc;
