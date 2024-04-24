@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import { useDonorHistReqsContext } from '../hooks/DonorHistReqContextHook';
 import { useAuthContext } from "../hooks/AuthContextHook";
 import DonorHistReqCards from '../components/DonorHistReqCards';
+import { useNavigate } from 'react-router-dom';
 
 const PendingPermissions = () => {
   const { donorHistReqs, dispatch } = useDonorHistReqsContext();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDonorHistReqs = async () => {
@@ -52,7 +54,7 @@ const PendingPermissions = () => {
               }
             </div>
           </div>
-            <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+            <button className="navButton" onClick={() => navigate('/user-profile')}>
               Go Back
             </button>
         </div>

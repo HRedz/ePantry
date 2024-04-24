@@ -182,6 +182,9 @@ const EditAccount = () => {
                 ></input>
                 <buttonContainer><button>Edit description</button></buttonContainer>
             </form>
+            <button className="navButton" onClick={() => navigate('/user-profile')}>
+            Go back
+            </button>
        </div>
     )
  }

@@ -2,11 +2,12 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useAuthContext } from '../hooks/AuthContextHook';
 import { useDonationsContext } from '../hooks/DonationContextHook';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ReceivedDonations = () => {
   const { donations, dispatch } = useDonationsContext();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDonations = async () => {
@@ -54,7 +55,7 @@ const ReceivedDonations = () => {
             </table>
           </div>
 
-          <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+          <button className="navButton" onClick={() => navigate('/user-profile')}>
             Go Back
           </button>
         </div>

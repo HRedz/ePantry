@@ -2,12 +2,14 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useAuthContext } from '../hooks/AuthContextHook';
 import { useDonationsContext } from '../hooks/DonationContextHook';
+import { useNavigate } from 'react-router-dom';
 
 const DonationsHistoryPage = () => {
 
   const { donations, dispatch } = useDonationsContext();
   const { user } = useAuthContext();
   const userLocal = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDonations = async () => {
@@ -70,7 +72,7 @@ const DonationsHistoryPage = () => {
             </div>
 
 
-            <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+            <button className="navButton" onClick={() => navigate('/user-profile')}>
               Go Back
             </button>
 
@@ -109,7 +111,7 @@ const DonationsHistoryPage = () => {
               </table>
             </div>
 
-            <button className="navButton" onClick={() => window.location.href = '/user-profile'}>
+            <button className="navButton" onClick={() => navigate('/user-profile')}>
               Go Back
             </button>
 

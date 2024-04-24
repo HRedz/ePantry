@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useAuthContext } from "../hooks/AuthContextHook";
 import { useGrantsContext } from "../hooks/GrantsContextHook";
+import { useNavigate } from 'react-router-dom';
 
 const GrantStatus = () => {
   const { user } = useAuthContext();
   const { grants, dispatch } = useGrantsContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchApps = async () => {
@@ -90,7 +92,7 @@ const GrantStatus = () => {
               </tbody>
             </table>
           </div>
-          <button className="navButton" onClick={() => window.location.href = '/user-profile'} style={{ marginTop: '20px' }}>
+          <button className="navButton" onClick={() => navigate('/user-profile')} style={{ marginTop: '20px' }}>
             Go Back
           </button>
         </div>

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
 
     if(!user){
       return (
@@ -24,13 +26,13 @@ const UserProfile = () => {
           />
           <h1>Individual: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+          <button className="navButton" onClick={() => navigate('/editaccount')}>
             Edit Account Info
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
+          <button className="navButton" onClick={() => navigate('/donationhistory')}>
             View Donation History
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/permissions'}>
+          <button className="navButton" onClick={() => navigate('/permissions')}>
             View Pending Permissions
           </button>
         </div>
@@ -48,16 +50,16 @@ const UserProfile = () => {
           />
           <h1>Company: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+          <button className="navButton" onClick={() => navigate('/editaccount')}>
             Edit Account Info
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/donationhistory'}>
+          <button className="navButton" onClick={() => navigate('/donationhistory')}>
             View Donation History
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/pendingapplications'}>
+          <button className="navButton" onClick={() => navigate('/pendingapplications')}>
             Approve/Deny Grant Applications
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/permissions'}>
+          <button className="navButton" onClick={() => navigate('/permissions')}>
             View Pending Permissions
           </button>
         </div>
@@ -75,13 +77,13 @@ const UserProfile = () => {
           />
           <h1>Organization: {user.name}</h1>
           <p>Email: {user.email}</p>
-          <button className="navButton" onClick={() => window.location.href = '/editaccount'}>
+          <button className="navButton" onClick={() => navigate('/editaccount')}>
             Edit Account Info
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/grantstatus'}>
+          <button className="navButton" onClick={() => navigate('/grantstatus')}>
             View Grant Status
           </button>
-          <button className="navButton" onClick={() => window.location.href = '/receiveddonations'}>
+          <button className="navButton" onClick={() => navigate('/receiveddonations')}>
             Donations Received
           </button>
         </div>

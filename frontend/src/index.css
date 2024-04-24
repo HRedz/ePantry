@@ -7,37 +7,44 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
   background: #FFFFFF;
   margin: 0;
   font-family: "Inter";
 }
+
 header {
   background: #FAF9F8;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
 }
+
 header nav1 {
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
   /*justify-content: space-between;*/
 }
+
 header a {
   color: #6D6D6D;
   text-decoration: none;
   margin: 10px;
 }
+
 header title1 {
   color: #589622;
   font-family: "Overpass";
   text-decoration: none;
 }
-.pages{
+
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -53,32 +60,36 @@ header title1 {
 }
 
 .home titleContainer {
-  width:100%;
-  height:100%;
-  display:flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
   margin: 0px auto;
   padding: 10px 20px;
   justify-content: center;
   align-items: center;
 }
+
 .home title1 {
   color: #FAF9F8;
   font-family: "Overpass";
   text-decoration: none;
-  font-size:52px;
+  font-size: 52px;
 }
-.home a {
+
+.home-link {
   padding: 12px 20px;
-  background-color:#6d9622;
+  background-color: #6d9622;
   border-radius: 12px;
   color: #FFFFFF;
   font-family: "Inter";
   font-size: 14px;
   text-decoration: none;
+  margin-right: 35px;
 }
+
 .home secondaryContainer {
-  align-items:center;
-  text-align:center;
+  align-items: center;
+  text-align: center;
 }
 
 /* donation pages */
@@ -91,10 +102,11 @@ header title1 {
 }
 
 .donation h2 {
-  text-align:center;
+  text-align: center;
 }
 
-.donation label, input {
+.donation label,
+input {
   display: block;
 }
 
@@ -120,28 +132,28 @@ header title1 {
 }
 
 .donation container {
-  text-align:left;
+  text-align: left;
 }
 
 .donation container2 {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
 
 .donation button {
   padding: 12px 20px;
-  background-color:#6d9622;
+  background-color: #6d9622;
   border-radius: 12px;
   color: #FFFFFF;
   font-family: "Inter";
   font-size: 14px;
   text-decoration: none;
-  cursor:pointer;
-  border:0;
-  text-align:center;
+  cursor: pointer;
+  border: 0;
+  text-align: center;
 }
 
-.donation a{
+.donation a {
   color: #FFFFFF;
   font-family: "Inter";
   font-size: 14px;
@@ -155,7 +167,7 @@ header title1 {
   padding: 30px;
   background: #F9F9F9;
   border-radius: 20px;
-  text-align:center;
+  text-align: center;
 }
 
 .donationSubmit bodytext {
@@ -170,6 +182,7 @@ header title1 {
   max-width: 70%;
   margin: auto;
 }
+
 .orgcards {
   max-width: 100%;
   margin: 15px auto;
@@ -195,6 +208,7 @@ header title1 {
   max-width: 70%;
   margin: auto;
 }
+
 .companycards {
   max-width: 100%;
   margin: 15px auto;
@@ -311,12 +325,15 @@ header title1 {
   color: #454E48;
   font-family: "Inter";
 }
+
 .grantTitle {
   font-size: 18px;
 }
+
 .applicationBody {
   font-size: 14px;
 }
+
 .applicationStatus {
   padding-top: 5px;
   color: #454E48;
@@ -336,7 +353,7 @@ header title1 {
 
 .approveButtonText {
   margin-left: 25px;
-  color:#F9F9F9;
+  color: #F9F9F9;
 }
 
 .rejectButton {
@@ -352,10 +369,10 @@ header title1 {
 
 .rejectButtonText {
   margin-left: 32px;
-  color:#F9F9F9;
+  color: #F9F9F9;
 }
 
-.donateButton{
+.donateButton {
   display: block;
   margin-top: 10px;
   background-color: #6d9622;
@@ -364,7 +381,7 @@ header title1 {
   width: 130px;
   height: 25px;
   padding: 10px;
-  color:#F9F9F9;
+  color: #F9F9F9;
   cursor: pointer;
 }
 
@@ -390,10 +407,11 @@ header title1 {
 }
 
 .editAccount h2 {
-  text-align:center;
+  text-align: center;
 }
 
-.editAccount label, input {
+.editAccount label,
+input {
   display: block;
 }
 
@@ -412,22 +430,30 @@ header title1 {
   box-sizing: border-box;
 }
 
-.editAccount buttonContainer{
-  display:flex;
+.editAccount buttonContainer {
+  display: flex;
   justify-content: right;
 }
 
-.editAccount button{
+.editAccount button {
   margin-bottom: 20px;
   color: #6d9622;
   /*padding: 12px 20px;
   width: 600px;*/
-  background-color:transparent;
+  background-color: transparent;
   font-family: "Inter";
   font-size: 14px;
   text-decoration: none;
-  cursor:pointer;
-  border:0;
+  cursor: pointer;
+  border: 0;
+}
+
+.editAccount .navButton {
+  color: #ffffff;
+  border: 100;
+  background-color: #6d9622;
+  margin-right: 20px;
+  margin-left: auto;
 }
 
 .radio-button {
@@ -447,10 +473,13 @@ header title1 {
   width: 100%;
 }
 
-.falseApprovalContainer, .trueApprovalContainer {
-  flex: 1; /* Each container takes up equal space */
+.falseApprovalContainer,
+.trueApprovalContainer {
+  flex: 1;
+  /* Each container takes up equal space */
   display: flex;
-  flex-direction: column; /* Organizes the cards in a column */
+  flex-direction: column;
+  /* Organizes the cards in a column */
   padding: 10px;
 }
 
@@ -484,7 +513,7 @@ header title1 {
   background-color: #ffffff;
   border: 2px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 10px;
   transition: all 0.3s ease-in-out;
@@ -506,21 +535,28 @@ header title1 {
 
 .button-container {
   display: flex;
-  justify-content: space-around; /* Space distribution between buttons */
+  justify-content: space-around;
+  /* Space distribution between buttons */
 }
 
-.approveDonorHistReq, .denyDonorHistReq, .revokeDonorHistReq {
+.approveDonorHistReq,
+.denyDonorHistReq,
+.revokeDonorHistReq {
   background-color: #6d9622;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 8px 16px;
   cursor: pointer;
-  transition: background-color 0.2s; /* Smooth color transition on hover */
+  transition: background-color 0.2s;
+  /* Smooth color transition on hover */
 }
 
-.approveDonorHistReq:hover, .denyDonorHistReq:hover, .revokeDonorHistReq:hover {
-  background-color: #5a7c1b; /* Darken button on hover */
+.approveDonorHistReq:hover,
+.denyDonorHistReq:hover,
+.revokeDonorHistReq:hover {
+  background-color: #5a7c1b;
+  /* Darken button on hover */
 }
 
 .donation-table-container {
@@ -535,7 +571,8 @@ header title1 {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.donation-table th, .donation-table td {
+.donation-table th,
+.donation-table td {
   text-align: left;
   padding: 12px 20px;
   border-bottom: 1px solid #ddd;
@@ -555,7 +592,7 @@ header title1 {
   color: red;
 }
 
-.moreInfoButton{
+.moreInfoButton {
   display: block;
   margin-top: 10px;
   background-color: #6d9622;
@@ -566,12 +603,12 @@ header title1 {
   padding: 10px;
 }
 
-.moreInfoButtonText{
+.moreInfoButtonText {
   margin-left: 17px;
-  color:#F9F9F9;
+  color: #F9F9F9;
 }
 
-.viewHistButton{
+.viewHistButton {
   display: block;
   margin-top: 10px;
   background-color: #6d9622;
@@ -582,9 +619,9 @@ header title1 {
   padding: 10px;
 }
 
-.viewHistButtonText{
+.viewHistButtonText {
   margin-left: 15px;
-  color:#F9F9F9;
+  color: #F9F9F9;
 }
 
 .login-container {

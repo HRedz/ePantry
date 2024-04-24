@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from "../hooks/AuthContextHook"
+import { useNavigate } from 'react-router-dom';
 
 const GrantStatus = () => {
-  const {user} = useAuthContext()
+  const {user} = useAuthContext();
+  const navigate = useNavigate();
 
   // State to store grant data
   /*const [grants] = useState([
@@ -87,7 +89,7 @@ const GrantStatus = () => {
         <Grant key={grant.id} name={grant.grantTitle} status={grant.status} company={grant.companyName} amount={grant.grantAmount} />
       ))}
 
-    <button onClick={() => window.location.href = '/user-profile'}>
+    <button className="navButton" onClick={() => navigate('/user-profile')}>
     Go Back
     </button>
 
