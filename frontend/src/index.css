@@ -629,21 +629,21 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100vh;
   background-color: #f4f4f4;
-  min-height: 100vh;
+  min-height: 50vh;
   max-height: 100vh;
 }
 
 .create-user-form {
   margin-top: 20px;
-  min-height: 85vh;
   max-height: 85vh;
+  margin-bottom: 20px;
 }
 
 .login-container form {
   width: 100%;
   max-width: 360px;
+  margin-bottom: 20px;
   padding: 20px;
   background: white;
   border: 1px solid #ccc;
