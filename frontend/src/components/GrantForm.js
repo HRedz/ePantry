@@ -24,7 +24,7 @@ const GrantForm = () => {
     const companyId = user.id
     const companyName = user.name
 
-    const grant = {companyId, companyName, title, amount, closeDate, description}
+    const grant = { companyId, companyName, title, amount, closeDate, description }
     console.log(grant)
 
     const response = await fetch('/api/grants', {
@@ -48,49 +48,51 @@ const GrantForm = () => {
       setDescription('')
       setError(null)
       setEmptyFields([])
-      dispatch({type: 'CREATE_GRANT', payload: json})
+      dispatch({ type: 'CREATE_GRANT', payload: json })
     }
   }
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
-      <h3>Post a New Grant</h3>
+    <div className="login-container">
+      <form className="create" onSubmit={handleSubmit}>
+        <h3>Post a New Grant</h3>
 
-      <label>Grant Title:</label>
-      <input 
-        type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        className={emptyFields.includes('title') ? 'error' : ''}
-      />
+        <label>Grant Title:</label>
+        <input
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          className={emptyFields.includes('title') ? 'error' : ''}
+        />
 
-      <label>Grant Amount (in USD):</label>
-      <input 
-        type="number"
-        onChange={(e) => setAmount(e.target.value)}
-        value={amount}
-        className={emptyFields.includes('amount') ? 'error' : ''}
-      />
+        <label>Grant Amount (in USD):</label>
+        <input
+          type="number"
+          onChange={(e) => setAmount(e.target.value)}
+          value={amount}
+          className={emptyFields.includes('amount') ? 'error' : ''}
+        />
 
-      <label>Close Date:</label>
-      <input 
-        type="date"
-        onChange={(e) => setCloseDate(e.target.value)}
-        value={closeDate}
-        className={emptyFields.includes('closeDate') ? 'error' : ''}
-      />
+        <label>Close Date:</label>
+        <input
+          type="date"
+          onChange={(e) => setCloseDate(e.target.value)}
+          value={closeDate}
+          className={emptyFields.includes('closeDate') ? 'error' : ''}
+        />
 
-    <label>Description:</label>
-      <input 
-        type="text"
-        onChange={(e) => setDescription(e.target.value)}
-        value={description}
-        className={emptyFields.includes('description') ? 'error' : ''}
-      />
+        <label>Description:</label>
+        <input
+          type="text"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          className={emptyFields.includes('description') ? 'error' : ''}
+        />
 
-      <button>Post Grant</button>
-      {error && <div className="error">{error}</div>}
-    </form>
+        <button className="navButton">Post Grant</button>
+        {error && <div className="error">{error}</div>}
+      </form>
+    </div>
   )
 }
 

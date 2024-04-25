@@ -669,7 +669,8 @@ input {
 .login-container input[type="email"],
 .login-container input[type="password"],
 .login-container input[type="text"],
-.login-container input[type="number"] {
+.login-container input[type="number"],
+.login-container input[type="date"] {
   width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #ccc;
