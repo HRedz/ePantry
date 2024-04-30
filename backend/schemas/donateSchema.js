@@ -48,8 +48,9 @@ const donateSchema = new Schema({
     //Monetary donation fields
 
     creditCardNum:{
-        type: String,
-        minlength: [16, 'Credit card number must be 16 digits. Please try again'],
+        type: Number,
+        min: [1000000000000000, 'Credit card number must be 16 digits. Please try again'],
+        max: [9999999999999999, 'Credit card number must be 16 digits. Please try again'],
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
@@ -61,20 +62,22 @@ const donateSchema = new Schema({
     },
 
     creditCardCVV:{
-        type: String,
-        minlength: [3, 'Credit card cvv must be a minimum of 3 digits. Please try again'],
-        maxlength: [4, 'Credit card cvv must be at most 4 digits. Please try again'],
+        type: Number,
+        min: [100, 'Credit card cvv must be a minimum of 3 digits. Please try again'],
+        max: [9999, 'Credit card cvv must be at most 4 digits. Please try again'],
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
     zipcode:{
-        type: String,
-        minlength: [5, 'US Zipcode must be 5 digits. Please try again'],
+        type: Number,
+        min: [10000, 'US Zipcode must be 5 digits. Please try again'],
+        max: [99999, 'US Zipcode must be 5 digits. Please try again'],
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
     amount:{
         type: Number,
+        min: [0, 'Amount should start from 0. Please try again'],
         required: function () { return this.donationType === 'Monetary'; },      
     },
 
@@ -102,13 +105,15 @@ const donateSchema = new Schema({
         required: function () { return this.donationType === 'Non-monetary'; },
     },
     originZipcode:{
-        type: String,
-        minlength: [5, 'Origin zipcode must be 5 digits. Please try again'],
+        type: Number,
+        min: [10000, 'Origin zipcode must be 5 digits. Please try again'],
+        max: [99999, 'Origin zipcode must be 5 digits. Please try again'],
         required: function () { return this.donationType === 'Non-monetary'; },      
     },
     destZipcode:{
-        type: String,
-        minlength: [5, 'Destination zipcode must be 5 digits. Please try again'],
+        type: Number,
+        min: [10000, 'Destination zipcode must be 5 digits. Please try again'],
+        max: [99999, 'Destination zipcode must be 5 digits. Please try again'],
         required: function () { return this.donationType === 'Non-monetary'; },      
     },
     dropoffDate:{
