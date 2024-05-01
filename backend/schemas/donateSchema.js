@@ -21,6 +21,8 @@ const donateSchema = new Schema({
 
     phone:{
         type: Number,
+        min: [1000000000, 'Phone number must be 10 digits.'],
+        max: [9999999999, 'Phone number must be 10 digits.'],
         required: true,
     },
 
