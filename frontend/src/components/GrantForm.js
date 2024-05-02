@@ -39,8 +39,15 @@ const GrantForm = () => {
 
     if (!response.ok) {
       setError(json.error)
-      setEmptyFields(json.emptyFields)
+      
+      if (Array.isArray(json.emptyFields)) {
+        setEmptyFields(json.emptyFields);
+      } else {
+        setEmptyFields([]); 
+      }
+
     }
+    
     if (response.ok) {
       setTitle('')
       setAmount('')

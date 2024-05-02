@@ -31,7 +31,7 @@ const applicationSchema = new Schema({
         required: true
     },
     grantAmount: {
-        type: String,
+        type: Number,
         required: true
     }
 }, { timestamps: true })
