@@ -96,9 +96,20 @@ const postGrant = async(req, res) => {
     try {
         const companyId = req.user._id.toString()
         const grant = await Grant.create({companyId, companyName, title, amount, closeDate, description})
+        
+        await grant.save();
+        console.log('Grant info saved>');
+
         res.status(200).json(grant)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        if(error.name == 'ValidationError') {
+            console.error('Grant validation error check values entered',error);
+            return res.status(400).json({error: error.message});
+          }
+        else{  
+            console.error(error);
+            res.status(500).json({error: error.message});
+        }
     }
 }
 

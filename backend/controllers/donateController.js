@@ -107,12 +107,12 @@ const postDonation = async(req, res) => {
         const donate = await Donate.create({donationID, donorName, orgName, phone, address, donationType, orgId, creditCardNum, creditCardExp, creditCardCVV, zipcode, amount, paymentDate, donatedItems, itemWeight, noOfPackages, originZipcode, destZipcode, dropoffDate})
         
         await donate.save();
-        console.log('Saved>');
+        console.log('Donation info saved>');
         
         res.status(200).json(donate)
     } catch (error) {
         if(error.name == 'ValidationError') {
-            console.error('Validation error check values entered',error);
+            console.error('Donation validation error check values entered',error);
             return res.status(400).json({error: error.message});
           }
         else{  

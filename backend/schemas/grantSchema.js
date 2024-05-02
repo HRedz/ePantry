@@ -17,6 +17,7 @@ const grantSchema = new Schema({
     },
     amount: {
         type: Number,
+        min: [0, 'Grant post should be more than 0'],
         required: true
     },
     closeDate: {
